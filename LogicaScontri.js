@@ -293,7 +293,7 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
                    setTimeout(() => {DatiDiPosizione.Schivando = false;},400);
                    setTimeout(() => {PuoSchivare = true;},1000);
                 }}});
-    BottoneSpara.addEventListener('touchstart',(event) => {if(Fattibile){if(event.touches.length >= 2){Fattibile = false;} BottoneSpara.style.opacity = "1"; if(!DatiDiPosizione.InPausa){
+    BottoneSpara.addEventListener('touchstart',(event) => {if(Fattibile || event.touches.length > 1){if(Fattibile){event.stopImmediatePropagation();} BottoneSpara.style.opacity = "1"; if(!DatiDiPosizione.InPausa){
             if(!Colpo && !InCarica && risparo)
             {   
                 muny = ArmaPresa.munizioni > 0;
@@ -378,7 +378,7 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
                 }}});
     BottoneMuoviSu.addEventListener('touchend',(event) => {if(!Fattibile){Fattibile = true;} BottoneMuoviSu.style.opacity = "0.5"; DatiDiPosizione.Corri = false; ArmaInCanna.classList.remove('shake');});
     BottoneMuoviGiù.addEventListener('touchend',(event) => {if(!Fattibile){Fattibile = true;} BottoneMuoviGiù.style.opacity = "0.5"; DatiDiPosizione.Corri = false; ArmaInCanna.classList.remove('shake');});
-    BottoneSpara.addEventListener('touchend',(event) => {if(!Fattibile){Fattibile = true;} BottoneMuoviGiù.style.opacity = "0.5";
+    BottoneSpara.addEventListener('touchend',() => {BottoneSpara.style.opacity = "0.5";
                     Colpo = false;
                     if(ArmaPresa.altorateo)
                     {
@@ -389,7 +389,7 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
                         }
                     }
                 });
-            document.addEventListener('click',(event) => {if(!DatiDiPosizione.InPausa && event.touches.length == 0){PausaRiprendi(DatiDiPosizione,NemicoScelto)}});
+            document.addEventListener('click',(event) => {if(!DatiDiPosizione.InPausa){event.stopPropagation(); PausaRiprendi(DatiDiPosizione,NemicoScelto)}});
     Partita = setInterval(() => {
         if(Protagonista.vita == 0)
         {
