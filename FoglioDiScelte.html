@@ -1,0 +1,59 @@
+<!doctype HTML>
+<html lang = "it">
+    <head>
+        <meta charset = "UTF-8"/>
+        <meta name = "videogame" content = "width=device-width, initial-scale=1.0"/>
+        <title>Run and Attack Madly</title>
+        <link rel = "stylesheet" type = "text/css" href= "Aspetto.css"/>
+        <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    </head>
+    <body onload = "Nemici.forEach(N => {ColoraNemico(N.nome)});">
+        <h2>Chi vuoi affrontare?</h2>
+        <div class = "contscelte">
+            <div><button class = "BoxScelta N" id = "Metalskeletoncowboy" type="button" onclick = "ScegliNemico('.N','Metal skeleton cowboy')"><img class = "Anteprima" src = "./Anteprime/Metal skeleton cowboy_anteprima.jpg" alt = "Scelta"/>Metal skeleton cowboy<br/><br/>Se stai leggendo la descrizione per capire chi sia e da dove venga questo tizio,ti dico sin da subito che non troverai granché</button></div>
+            <div><button class = "BoxScelta N" id = "IlRobotdelcartoneanni80" type="button" onclick = "ScegliNemico('.N','Il Robot del cartone anni 80')"><img class = "Anteprima" src = "./Anteprime/Il Robot del cartone anni 80_anteprima.jpg" alt = "Scelta"/>Il Robot del cartone anni '80<br/><br/>Questo o lo conosci tu o lo conoscono i tuoi</button></div>
+            <div><button class = "BoxScelta N" id = "Cartellonepubblicitarioconlegambe" type="button" onclick = "ScegliNemico('.N','Cartellone pubblicitario con le gambe')"><img class = "Anteprima" src = "./Anteprime/Cartellone pubblicitario con le gambe_anteprima.jpg" alt = "Scelta"/>Cartellone pubblicitario con le gambe<br/><br/>Al giorno d'oggi,la pubblicità t'insegue pure per strada</button></div>
+            <div><button class = "BoxScelta N" id = "Paperacavalcapappardelle" type="button" onclick = "ScegliNemico('.N','Papera cavalcapappardelle')"><img class = "Anteprima" src = "./Anteprime/Papera cavalcapappardelle_anteprima.jpg" alt = "Scelta"/>Papera cavalcapappardelle<br/><br/>Questo è senza dubbio l'essere più buono al mondo...cotto al forno</button></div>
+        </div>
+        <h2>Quale arma da mischia vuoi usare?</h2>
+        <div class = "contscelte">
+            <div><button class = "BoxScelta M" id = "Schiaffotermico" type="button" onclick = "ScegliMischia('.M','Schiaffo termico')"><img class = "Anteprima" src = "./Anteprime/Schiaffo termico_anteprima.jpg" alt = "Scelta"/>Schiaffo termico<br/><br/>Può cuocere un pollo nel giro di venti secondi(!)</button></div>
+            <div><button class = "BoxScelta M" id = "Gelatosciolto" type="button" onclick = "ScegliMischia('.M','Gelato sciolto')"><img class = "Anteprima" src = "./Anteprime/Gelato sciolto_anteprima.jpg" alt = "Scelta"/>Gelato sciolto<br/><br/>Se non lo consideri un'arma,probabilmente non ne hai mai ricevuto uno in faccia</button></div>
+            <div><button class = "BoxScelta M" id = "Borsatarocca" type="button" onclick = "ScegliMischia('.M','Borsa tarocca')"><img class = "Anteprima" src = "./Anteprime/Borsa tarocca_anteprima.jpg" alt = "Scelta"/>Borsa tarocca<br/><br/>L'unica cosa che la distingue dall'originale è il prezzo</button></div>
+            <div><button class = "BoxScelta M" id = "Cinturadragone" type="button" onclick = "ScegliMischia('.M','Cintura dragone')"><img class = "Anteprima" src = "./Anteprime/Cintura dragone_anteprima.jpg" alt = "Scelta"/>Cintura dragone<br/><br/>Talmente elastica da essere perfetta su chiunque</button></div>
+        </div>
+        <h2>Quale shotgun vuoi usare?</h2>
+        <div class = "contscelte">
+            <div><button class = "BoxScelta S" id = "Quadrupletta" type="button" onclick = "ScegliArma('.S','Quadrupletta',1)"><img class = "Anteprima" src = "./Anteprime/Quadrupletta_anteprima.jpg" alt = "Scelta"/>Quadrupletta<br/><br/>La doppietta è ormai obsoleta</button></div>
+            <div><button class = "BoxScelta S" id = "Doppiapistoladaclown" type="button" onclick = "ScegliArma('.S','Doppia pistola da clown',1)"><img class = "Anteprima" src = "./Anteprime/Doppia pistola da clown_anteprima.jpg" alt = "Scelta"/>Doppia pistola da clown<br/><br/>Doppio scherzo,doppio divertimento! Giusto?</button></div>
+            <div><button class = "BoxScelta S" id = "Spargischegge" type="button" onclick = "ScegliArma('.S','Spargischegge',1)"><img class = "Anteprima" src = "./Anteprime/Spargischegge_anteprima.jpg" alt = "Scelta"/>Spargischegge<br/><br/>Come dice il detto,la miglior difesa è uno sciame di schegge metalliche colme di sporcizia radioattiva</button></div>
+            <div><button class = "BoxScelta S" id = "Lanciafiammetriforcuto" type="button" onclick = "ScegliArma('.S','Lanciafiamme triforcuto',1)"><img class = "Anteprima" src = "./Anteprime/Lanciafiamme triforcuto_anteprima.jpg" alt = "Scelta"/>Lanciafiamme triforcuto<br/><br/>"Scusa,hai da accendere?"</button></div>
+        </div>
+        <h2>Quale fucile d'assalto vuoi usare?</h2>
+        <div class = "contscelte">
+            <div><button class = "BoxScelta A" id = "Distributoredipalline" type="button" onclick = "ScegliArma('.A','Distributore di palline',2)"><img class = "Anteprima" src = "./Anteprime/Distributore di palline_anteprima.jpg" alt = "Scelta"/>Distributore di palline<br/><br/>Distruggi casa con soli 50 centesimi</button></div>
+            <div><button class = "BoxScelta A" id = "Sparaossa" type="button" onclick = "ScegliArma('.A','Sparaossa',2)"><img class = "Anteprima" src = "./Anteprime/Sparaossa_anteprima.jpg" alt = "Scelta"/>Sparaossa<br/><br/>Ideale per placare cani irascibili</button></div>
+            <div><button class = "BoxScelta A" id = "Friggitricedaassalto" type="button" onclick = "ScegliArma('.A','Friggitrice da assalto',2)"><img class = "Anteprima" src = "./Anteprime/Friggitrice da assalto_anteprima.jpg" alt = "Scelta"/>Friggitrice da assalto<br/><br/>Friggitrice ad olio e fucile d'assalto: binomio impopolare,ma letale!</button></div>
+            <div><button class = "BoxScelta A" id = "Lanciaminirazzi" type="button" onclick = "ScegliArma('.A','Lanciaminirazzi',2)"><img class = "Anteprima" src = "./Anteprime/Lanciaminirazzi_anteprima.jpg" alt = "Scelta"/>Lanciaminirazzi<br/><br/>Potrà mai un'arma d'assalto sparare razzi? Certamente!</button></div>
+        </div>
+        <h2>Quale fucile da cecchino vuoi usare?</h2>
+        <div class = "contscelte">
+            <div><button class = "BoxScelta C" id = "Generatoredabattaglia" type="button" onclick = "ScegliArma('.C','Generatore da battaglia',3)"><img class = "Anteprima" src = "./Anteprime/Generatore da battaglia_anteprima.jpg" alt = "Scelta"/>Generatore da battaglia<br/><br/>Piega i fulmini al tuo volere</button></div>
+            <div><button class = "BoxScelta C" id = "Lanciagranatediprecisione" type="button" onclick = "ScegliArma('.C','Lanciagranate di precisione',3)"><img class = "Anteprima" src = "./Anteprime/Lanciagranate di precisione_anteprima.jpg" alt = "Scelta"/>Lanciagranate di precisione<br/><br/>Quanti bersagli hai? Uno,due,otto? Non fa differenza,se sono tutti nello stesso punto</button></div>
+            <div><button class = "BoxScelta C" id = "Manoapistola" type="button" onclick = "ScegliArma('.C','Mano a pistola',3)"><img class = "Anteprima" src = "./Anteprime/Mano a pistola_anteprima.jpg" alt = "Scelta"/>Mano a pistola<br/><br/>Usa la fantasia e i proiettili diventeranno visibili</button></div>
+            <div><button class = "BoxScelta C" id = "Cannonedicarroarmato" type="button" onclick = "ScegliArma('.C','Cannone di carro armato',3)"><img class = "Anteprima" src = "./Anteprime/Cannone di carro armato_anteprima.jpg" alt = "Scelta"/>Cannone di carro armato<br/><br/>I proiettili anticarro possono non essere sparati da un carro</button></div>
+        </div>
+        <h2>Che difficoltà?</h2>
+        <div class = "contscelte">
+            <div><button class = "BoxScelta D" id = "D1" type="button" onclick = "ScegliDifficoltà('.D','D1',1)"><img class = "Anteprima" src = "./Anteprime/D1.jpg" alt = "Scelta"/>Chill<br/><br/>Allenati senza dare pugni alla tastiera</button></div>
+            <div><button class = "BoxScelta D" id = "D2" type="button" onclick = "ScegliDifficoltà('.D','D2',2)"><img class = "Anteprima" src = "./Anteprime/D2.jpg" alt = "Scelta"/>Fatti sotto<br/><br/>Vuoi iniziare a sbroccare per un gioco? Va bene,ma facciamo con calma</button></div>
+            <div><button class = "BoxScelta D" id = "D3" type="button" onclick = "ScegliDifficoltà('.D','D3',3)"><img class = "Anteprima" src = "./Anteprime/D3.jpg" alt = "Scelta"/>Strazio<br/><br/>Mena le mani o finisci male</button></div>
+            <div><button class = "BoxScelta D" id = "D4" type="button" onclick = "ScegliDifficoltà('.D','D4',4)"><img class = "Anteprima" src = "./Anteprime/D4.jpg" alt = "Scelta"/>Selezione naturale<br/><br/>Solo i più forti sopravviveranno</button></div>
+        </div>
+        <div class = "Centratore"><button id = "Conferma" onclick = "Conferma()">COMBATTI!</button></div>
+        <script src = "DefinizioneClassi.js"></script>
+        <script src = "DefinizioneUtili.js"></script>
+        <script src = "AusilioOpzioni.js"></script>
+        <script src = "FormScelte.js"></script>
+    </body>
+</html>

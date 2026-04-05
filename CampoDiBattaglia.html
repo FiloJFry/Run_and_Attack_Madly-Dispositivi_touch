@@ -1,0 +1,70 @@
+<!doctype HTML>
+<html lang = "it">
+    <head>
+        <meta charset = "UTF-8"/>
+        <meta name = "videogame" content = "width=device-width, initial-scale=1.0"/>
+        <title>Run and Attack Madly</title>
+        <link rel = "stylesheet" type = "text/css" href = "AspettoDiBattaglia.css"/>
+        <link rel = "stylesheet" type="text/css" href = "MenùOpzioni.css" />
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+    </head>
+    <body onload = "VaiVaiVai()"><!--onload = "VaiVaiVai()"-->
+        <h5 id = "S1" translate = "no">⮝</h5>
+        <h5 id = "S2" translate = "no">⮟</h5>
+        <div class = "Centratore">
+            <div id = "PienBarra"></div>
+            <div id = "Barra"></div>
+        </div>
+        <div class = "Centratore">
+            <img id = "Nemico" src = "./TonyCiccione.jpg" alt = "Nemico"/>
+            <h5 id = "Attacco" translate = "no" style = "color: transparent">●</h5>
+        </div>
+        <h5 id = "Mirino" translate = "no" style = "color: white">I<br/>---X---<br>I</h5>
+        <h5 id = "Rumori"></h5>
+        <h5 id = "Frasi"></h5>
+        <div id = "Info">1000|9000</div>
+        <div id = "PienBarraMischia"></div><div id = "BarraMischia"></div>
+        <div id = "HP">HP: 4</div>
+        <button class = "Comandi movimento" id = "MuoviSu">↑</button>
+        <button class = "Comandi" id = "Schiva">»</button>
+        <button class = "Comandi movimento" id = "MuoviGiù">↓</button>
+        <button class = "Comandi" id = "Spara">⌂</button>
+        <button class = "Comandi" id = "Ricarica">ᶗ</button>
+        <button class = "CambioArmi" id = "Shotgun">╦</button>
+        <button class = "CambioArmi" id = "Assalto">ﬀ</button>
+        <button class = "CambioArmi" id = "Cecchino">║</button>
+        <button class = "CambioArmi" id = "Mischia">₪</button>
+        <img id= "Arma" src = "./DoomGuy.jpg" alt = "Arma"/>
+        <dialog id = "Pausa">
+            <div id = "SchermataPausa">
+                In Pausa
+                <button type = "button" id = "Riprendi" onclick = "event.stopPropagation(); PausaRiprendi(DatiDiPosizione,NemicoScelto);">Riprendi</button>
+                <button type = "button" id = "Riprova" onclick = "if(!RimaniQui){RimaniQui = true;} PannelloConferma.showModal()">Riprova</button>
+                <button type="button" id = "BottoneOpzioni" onclick="PannelloOpzioni.showModal();">Opzioni</button>
+                <button type = "button" id = "Abbandona" onclick = "if(RimaniQui){RimaniQui = false;} PannelloConferma.showModal()">Abbandona</button>
+            </div>
+        </dialog>
+        <dialog id = "Conferma">
+            <div id = "SchermataConferma">
+                Davvero?
+                <button type = "button" id = "Sì" onclick = "if(RimaniQui){window.location.reload();} else{window.location.href = 'SchermataAvvio.html'}">Sì</button>
+                <button type = "button" id = "No" onclick = "PannelloConferma.close()">No</button>
+            </div>
+        </dialog>
+        <dialog id="Opzioni">
+        <div id="SchermataOpzioni">
+                <b>Rumori delle armi</b>
+                <div class = "Riga"><button type = "button" id = "MostraISuoni"  onclick = "if(!MostraSuoni){MostraSuoni = true;window.localStorage.removeItem('MostraSuoni');BottoneSuoni.style.backgroundColor = 'green';BottoneSuoni.textContent = '√';}
+                else{MostraSuoni = false;window.localStorage.setItem('MostraSuoni',`${MostraSuoni}`);BottoneSuoni.style.backgroundColor = 'red';BottoneSuoni.textContent = 'x';}">√</button></div>
+                <div class = MiniCentratore>
+                <button type="button" id="Salva" onclick="Salva()">Salva</button>
+                <button type="button" id="Reset" onclick="Reset()">Ripristina predefiniti</button>
+            </div>
+            </div>
+        </dialog>
+        <script src = "DefinizioneClassi.js"></script>
+        <script src = "DefinizioneUtili.js"></script>
+        <script src = "AusilioOpzioni.js"></script>
+        <script src = "LogicaScontri.js"></script>
+    </body>
+</html>
