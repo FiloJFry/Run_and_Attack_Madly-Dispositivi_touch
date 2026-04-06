@@ -1,18 +1,136 @@
 <!doctype HTML>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8" />
-    <meta name="videogame" content="width=device-width, initial-scale=1.0" />
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Run and Attack Madly</title>
-    <link rel = "stylesheet" type="text/css" href = "AspettoBottoni.css" />
-    <link rel = "stylesheet" type="text/css" href = "MenùOpzioni.css" />
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <style>
+        *{
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+#Centratore{
+    display: flex;
+    flex-direction: row;
+    padding: 18vw;
+    justify-content: center;
+}
+#SchermataTutorial{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    border: 0.3vw solid white;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+    padding: 1vw;
+}
+#Gioca{
+    background-color: red;
+}
+#RapidoTutorial{
+    background-color: blue;
+}
+#BottoneOpzioni{
+    background-color: green;
+}
+#Ok{
+    background-color: green;
+}
+#SchermataOpzioni{
+    display: flex;
+    flex-direction: column;
+    padding: 0.4vw;
+    background-color: black;
+    border: 0.3vw solid white;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+}
+button{
+    height: 8vw;
+    width: 14vw;
+    padding: 0.7vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    margin: 2vw;
+}
+input[type = "text"]{
+    background-color: black;
+    border: solid white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+    color: white;
+}
+select{
+    background-color: black;
+    border: solid white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+    color: white;
+}
+#MostraLePosizioni{
+    background-color: red;
+    border: solid white;
+    color: white;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#MostraISuoni{
+    background-color: green;
+    border: solid white;
+    color: white;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.MiniCentratore{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.Riga{
+    margin: 1vw;
+}
+#Salva{
+    background-color: blue;
+}
+#Reset{
+    background-color: red;
+}
+@keyframes shake{
+    0%
+    {
+        transform: translateX(3vw);
+    }
+    50%
+    {
+        transform: translateX(-3vw);
+    }
+    100%
+    {
+        transform: translateX(3vw);
+    }
+}
+.shake{
+    animation: shake 0.2s ease-in-out;
+    animation-iteration-count: 5;
+}
+    </style>
 </head>
-
 <body onload = "AggiornaTasti();">
     <div id="Centratore">
-        <button type="button" id="Gioca" onclick="window.location.href = 'FoglioDiScelte.html';">Gioca</button>
+        <button type="button" id="Gioca" onclick="window.location.href = './FoglioDiScelte.html';">Gioca</button>
         <button type="button" id="RapidoTutorial" onclick="PannelloTutorial.showModal();">Rapido
             tutorial</button>
         <button type="button" id="BottoneOpzioni" onclick="PannelloOpzioni.showModal();">Opzioni</button>
@@ -50,8 +168,33 @@
             </div>
             </div>
     </dialog>
-    <script src = "AusilioOpzioni.js"></script>
-    <script src = "FormScelte.js"></script>
+    <script>
+        let BottoneConferma = document.querySelector('#Conferma');
+let PannelloTutorial = document.querySelector('#Tutorial');
+let MostraPosizioni = false;
+let MostraSuoni = true;
+let NomiComandi = ['ComandoFuoco','ComandoRicarica','ComandoMuoviSu','ComandoMuoviGiù','ComandoSchiva','Comando0','Comando1','Comando2','Comando3'];
+let PannelloOpzioni = document.querySelector('#Opzioni');
+let BottoneSalva = document.querySelector('#Salva');
+let BottonePosizioni = document.querySelector('#MostraLePosizioni');
+let BottoneSuoni = document.querySelector('#MostraISuoni');
+function AggiornaTasti()
+{   
+    if(window.localStorage.getItem('MostraSuoni') != null)
+    {
+        BottoneSuoni.style.backgroundColor = 'red';
+        BottoneSuoni.textContent = 'x';
+    }
+}
+function Salva()
+{     
+    window.location.reload();
+}
+function Reset()
+{
+    window.localStorage.removeItem("MostraSuoni");
+    window.location.reload();
+}
+    </script>
 </body>
-
 </html>

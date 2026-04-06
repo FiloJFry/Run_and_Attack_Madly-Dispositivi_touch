@@ -2,11 +2,412 @@
 <html lang = "it">
     <head>
         <meta charset = "UTF-8"/>
-        <meta name = "videogame" content = "width=device-width, initial-scale=1.0"/>
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <title>Run and Attack Madly</title>
-        <link rel = "stylesheet" type = "text/css" href = "AspettoDiBattaglia.css"/>
-        <link rel = "stylesheet" type="text/css" href = "MenùOpzioni.css" />
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+        <style>
+            *{
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    overflow: hidden;
+}
+h4{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+}
+#Rumori{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3.2vw;
+    position: absolute;
+    left: 35vw;
+    top: 40vh;
+    z-index: 2;
+}
+#Frasi{
+    font: italic small-caps 2.4vw;
+    color: white;
+    position: absolute;
+    left: 70vw;
+    top: 0;
+    z-index: 3;
+}
+#Attacco{
+    font-size: 16vw;
+    position: absolute;
+    z-index: 1;
+    bottom: -0.75em;
+}
+#Mirino{
+    text-align: center;
+    font-size: 4vw;
+    z-index: 2;
+    position: absolute;
+    bottom: 27vh;
+    left: 40%;
+    right: 40%;
+}
+#Arma{
+    width: 20vw;
+    height: 16vw;
+    object-fit: contain;
+    position: absolute;
+    z-index: 2;
+    bottom: 0vh;
+    left: 40%;
+}
+#Nemico
+{
+    width: 36vw;
+    height: 30vw;
+    position: absolute;
+    z-index: 0;
+    object-fit: contain;
+    top: 16vh;
+}
+#HP{
+    border: 0.2em solid white;
+    background-color: blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4vw;
+    font-weight: bold;
+    color: white;
+    margin: 2vw;
+    position: absolute;
+    bottom: 52vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4vw;
+    position: absolute;
+    z-index: 2;
+}
+#Info{
+    width: 8vw;
+    padding: 1vw;
+    position: absolute;
+    bottom: 64vh;
+    z-index: 2;
+    color: white;
+    fonT-size: 2.5vw;
+    left: 78vw;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#PienBarra{
+    width: 32vw;
+    height: 5vw;
+    object-fit: contain;
+    border: 0.6vw solid white;
+    background-color: black;
+    position: absolute;
+    z-index: 1;
+    left: 0sem;
+}
+#Barra{
+    width: 30.875vw;
+    height: 3.85vw;
+    object-fit: contain;
+    background-color: red;
+    z-index: 2;
+    position: relative;
+}
+#PienBarraMischia{
+    width: 20vw;
+    height: 3vw;
+    background-color: white;
+    position: absolute;
+    z-index: 2;
+    bottom: 55vh;
+    margin: 1vw;
+    right: 0;
+}
+#BarraMischia{
+    width: 20vw;
+    height: 3vw;
+    background-color: blue;
+    position: absolute;
+    z-index: 3;
+    bottom: 55vh;
+    margin: 1vw;
+    right: 0;
+}
+#S1{
+    font-size: 12vw;
+    color: green;
+    position: absolute;
+    bottom: 33vh;
+}
+#S2{
+    font-size: 12vw;
+    color: purple;
+    position: absolute;
+    right: 0vw;
+    bottom: 33vh;
+}
+.Centratore
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+    flex-direction: column;
+}
+#SchermataPausa{
+    background-color: black;
+    border: 0.1vw solid white;
+    padding: 2.4vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 4vw;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+#SchermataConferma{
+    background-color: black;
+    border: 0.1vw solid white;
+    padding: 2.4vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 4vw;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+#Riprendi{
+    background-color: blue;
+}
+#Sì{
+    background-color: red;
+}
+#No{
+    background-color: blue;
+}
+#Riprova{
+    background-color: green;
+}
+#Abbandona{
+    background-color: red;
+}
+#BottoneOpzioni{
+    background-color: orange;
+}
+.Comandi{
+    width: 10vw;
+    height: 10vw;
+    color: white;
+    opacity: 0.5;
+    border-radius: 0.5vw;
+    position: absolute;
+    font-size: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none;  
+    user-select: none; 
+}
+.CambioArmi{
+    width: 7vw;
+    height: 7vw;
+    color: black;
+    opacity: 0.5;
+    border-radius: 0.5vw;
+    position: absolute;
+    font-size: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none;  
+    user-select: none; 
+}
+.movimento{
+    background-color:aqua;
+}
+#Schiva{
+    background-color:blue;
+    left: 17vw;
+    bottom: 12.5vh
+}
+#Spara{
+    background-color:red;
+    border-color: red;
+    right: 18vw;
+    bottom: 25vh;
+}
+#Ricarica{
+    background-color:green;
+    right: 18vw;
+    bottom: 0vh;
+}
+#MuoviSu{
+    left: 4vw;
+    bottom: 25vh;
+}
+#MuoviGiù{
+    left: 4vw;
+    bottom: 0vh;
+}
+#Mischia{
+    right: 0vw;
+    bottom: 5vh;
+}
+#Shotgun{
+    right: 7.5vw;
+    bottom: 20vh;
+}
+#Assalto{
+    right: 0vw;
+    bottom: 20vh;
+}
+#Cecchino{
+    right: 7.5vw;
+    bottom: 5vh;
+}
+@keyframes CaricaBarra
+{
+    from
+    {
+        width: 0vw;
+    }
+    to
+    {
+        width: 20vw;
+    }
+}
+@keyframes shake{
+    0%
+    {
+        transform: translateX(3vw);
+    }
+    50%
+    {
+        transform: translateX(-3vw);
+    }
+    100%
+    {
+        transform: translateX(3vw);
+    }
+}
+@keyframes vaiSu{
+    from
+    {
+        transform: translateY(20vw);
+    }
+    to
+    {
+        transform: translateY(0vw);
+    }
+}
+@keyframes vaiGiù{
+    from
+    {
+        transform: translateY(0vw);
+    }
+    to
+    {
+        transform: translateY(20vw);
+    }
+}
+@keyframes destra{
+    from
+    {
+        transform: translateX(0vw);
+    }
+    to
+    {
+        transform: translateX(25vw);
+    }
+}
+.BarraInCarica{
+    animation: CaricaBarra 45s linear;
+}
+.slideOutDown{
+    animation: vaiGiù 0.5s ease-in-out;
+}
+.slideInUp{
+    animation: vaiSu 0.5s ease-in-out;
+}
+.slideOutRight{
+    animation: destra 0.4s ease-in-out;
+}
+.shake{
+    animation: shake 0.5s ease-in-out;
+    animation-iteration-count: infinite;
+}
+#SchermataOpzioni{
+    display: flex;
+    flex-direction: column;
+    padding: 0.4vw;
+    background-color: black;
+    border: 0.3vw solid white;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+}
+button{
+    height: 8vw;
+    width: 14vw;
+    padding: 0.7vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    margin: 2vw;
+}
+input[type = "text"]{
+    background-color: black;
+    border: solid white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+    color: white;
+}
+select{
+    background-color: black;
+    border: solid white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+    color: white;
+}
+#MostraLePosizioni{
+    background-color: red;
+    border: solid white;
+    color: white;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#MostraISuoni{
+    background-color: green;
+    border: solid white;
+    color: white;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.MiniCentratore{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.Riga{
+    margin: 1vw;
+}
+#Salva{
+    background-color: blue;
+}
+#Reset{
+    background-color: red;
+}
+        </style>
     </head>
     <body onload = "VaiVaiVai()"><!--onload = "VaiVaiVai()"-->
         <h5 id = "S1" translate = "no">⮝</h5>
@@ -47,7 +448,7 @@
         <dialog id = "Conferma">
             <div id = "SchermataConferma">
                 Davvero?
-                <button type = "button" id = "Sì" onclick = "if(RimaniQui){window.location.reload();} else{window.location.href = 'SchermataAvvio.html'}">Sì</button>
+                <button type = "button" id = "Sì" onclick = "if(RimaniQui){window.location.reload();} else{window.location.href = './SchermataAvvio.html'}">Sì</button>
                 <button type = "button" id = "No" onclick = "PannelloConferma.close()">No</button>
             </div>
         </dialog>
@@ -62,9 +463,945 @@
             </div>
             </div>
         </dialog>
-        <script src = "DefinizioneClassi.js"></script>
-        <script src = "DefinizioneUtili.js"></script>
-        <script src = "AusilioOpzioni.js"></script>
-        <script src = "LogicaScontri.js"></script>
+        <script>
+            class Nemico
+{
+    constructor(nome,velocità,vita,attacco,coloreAttacco,Frasi)
+    {
+        this._nome = nome;
+        this._velocità = velocità;
+        this._vita = vita;
+        this._maxvita = vita;
+        this._attacco = attacco;
+        this._coloreAttacco = coloreAttacco;
+        this._Frasi = Frasi
+    }
+    get nome()
+    {
+        return this._nome;
+    }
+    get vita()
+    {
+        return this._vita;
+    }
+    set vita(life)
+    {
+        this._vita = life;
+    }
+    set velocità(boost)
+    {
+        this._velocità = boost;
+    }
+    get velocità()
+    {
+        return this._velocità;
+    }
+    set maxvita(lifelife)
+    {
+        this._maxvita = lifelife;
+    }
+    get maxvita()
+    {
+        return this._maxvita;
+    }
+    set attacco(at)
+    {
+        this._attacco = at;
+    }
+    get attacco()
+    {
+        return this._attacco;
+    }
+    set coloreAttacco(cat)
+    {
+        this._coloreAttacco = cat;
+    }
+    get coloreAttacco()
+    {
+        return this._coloreAttacco;
+    }
+    set Frasi(voiceline)
+    {
+        this._Frasi = voiceline;
+    }
+    get Frasi()
+    {
+        return this._Frasi;
+    }
+    AllAttacco(DatiDiPosizione)
+    {   
+        if(!DatiDiPosizione.InPausa)
+        {
+            DatiDiPosizione.AllAttacco = true;
+            Boss.setAttribute('src',`./Immagini/Nemici/${this.nome}_attaccando.jpg`);
+            FrasiNemico.textContent = `${this.Frasi[0]}`;
+            AttaccoNemico.style.color = this.coloreAttacco;
+            setTimeout(() => {Boss.setAttribute('src',`./Immagini/Nemici/${this.nome}.jpg`); FrasiNemico.textContent = "";},1000);
+            this.Attacco(DatiDiPosizione);
+        }
+    }
+    Attacco(DatiDiPosizione)
+    {   
+        setTimeout(() => {
+        if(DatiDiPosizione.distanzaAG > 0 && !DatiDiPosizione.InPausa)
+        {
+            DatiDiPosizione.distanzaAG = DatiDiPosizione.distanzaAG - 1;
+            AttaccoNemico.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanzaAG,1)})`;
+            this.Attacco(DatiDiPosizione);
+        }
+        else
+        {   
+            DatiDiPosizione.AllAttacco = false;
+            return;
+        }},1000/this.velocità);
+    }
+    Moto(DatiDiPosizione)
+    {   
+        let direzione = Math.random() < 0.5;
+        let spazio = Math.random()*200;
+        DatiDiPosizione.InMoto = true;
+        this.AggiornaPosizione(direzione,DatiDiPosizione,spazio);
+    }
+    AggiornaPosizione(direzione,DatiDiPosizione,spazio)
+    {   
+        setTimeout(() => {
+        if(spazio > 0 && DatiDiPosizione.InMoto && DatiDiPosizione.posA >= 0 && DatiDiPosizione.posA <= 200 && !DatiDiPosizione.InPausa)
+        {
+        if(direzione && DatiDiPosizione.posA > 0)
+        {
+            DatiDiPosizione.posA = DatiDiPosizione.posA - 1;
+            if(DatiDiPosizione.posA < DatiDiPosizione.posG)
+            {
+                DatiDiPosizione.distanza = DatiDiPosizione.distanza + 1;
+            }
+            else
+            {
+                DatiDiPosizione.distanza = DatiDiPosizione.distanza - 1;
+            }
+        }
+        else if(!direzione && DatiDiPosizione.posA < 200)
+        {
+            DatiDiPosizione.posA += 1;
+            if(DatiDiPosizione.posA > DatiDiPosizione.posG)
+            {
+                DatiDiPosizione.distanza = DatiDiPosizione.distanza + 1;
+            }
+            else
+            {
+                DatiDiPosizione.distanza = DatiDiPosizione.distanza - 1;
+            }
+        }
+        spazio -= 1;
+        Boss.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanza,10)})`;
+        if(AttaccoNemico.style.color == "transparent")
+        {
+            DatiDiPosizione.distanzaAG = DatiDiPosizione.distanza;
+            AttaccoNemico.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanzaAG,1)})`;
+        }
+        this.AggiornaPosizione(direzione,DatiDiPosizione,spazio);
+        }
+        else
+        {
+            DatiDiPosizione.InMoto = false;
+            return;
+        }},1000/this.velocità);
+    }
+
+}
+class Arma
+{   
+    constructor(nome,danni,portata,munizioni,inventario,rateo,altorateo,mirino,Rumori)
+    {
+        this._nome = nome;
+        this._danni = danni;
+        this._portata = portata;
+        this._munizioni = munizioni;
+        this._maxmunizioni = munizioni;
+        this._inventario = inventario;
+        this._rateo = rateo;
+        this._altorateo = altorateo;
+        this._mirino = mirino;
+        this._Rumori = Rumori;
+    }
+    set nome(name)
+    {   
+        this._nome = name;
+    }
+    get nome()
+    {
+        return this._nome;
+    }
+    set danni(danni)
+    {
+        this._danni = danni;
+    }
+    get danni()
+    {
+        return this._danni;
+    }
+    set portata(portata)
+    {
+        this._portata = portata;
+    }
+    get portata()
+    {
+        return this._portata;
+    }
+    set munizioni(ammo)
+    {
+        this._munizioni = ammo;
+    }
+    get munizioni()
+    {
+        return this._munizioni;
+    }
+    set inventario(ammo)
+    {
+        this._inventario = ammo;
+    }
+    get inventario()
+    {
+        return this._inventario;
+    }
+    set rateo(rateo)
+    {
+        this._rateo = rateo;
+    }
+    get rateo()
+    {
+        return this._rateo;
+    }
+    set altorateo(altorateo)
+    {
+        this._altorateo = altorateo;
+    }
+    get altorateo()
+    {
+        return this._altorateo;
+    }
+    set maxmunizioni(riferimento)
+    {
+        this._maxmunizioni = riferimento;
+    }
+    get maxmunizioni()
+    {
+        return this._maxmunizioni;
+    }
+    set mirino(testo)
+    {
+        this._mirino = testo;
+    }
+    get mirino()
+    {
+        return this._mirino;
+    }
+    set Rumori(suoni)
+    {
+        this._Rumori = suoni; 
+    }
+    get Rumori()
+    {
+        return this._Rumori;
+    }
+    Spara()
+    {    
+        if(this.munizioni > 0)
+        { 
+            ArmaInCanna.setAttribute('src',`./Immagini/Armi/${this.nome}_attaccando.jpg`);
+            this.munizioni -= 1;
+            PiuInfo.textContent = `${this.munizioni}|${this.inventario}`;
+            RumoriArma.textContent = `${this.Rumori[0]}`; 
+            setTimeout(() => {ArmaInCanna.setAttribute('src',`./Immagini/Armi/${this.nome}.jpg`); RumoriArma.textContent = "";},100);
+        }
+        else
+        {   
+            PiuInfo.style.color = 'red';
+            setTimeout(() => {PiuInfo.style.color = 'white';},1000);
+        }
+    }
+    Ricarica()
+    {   
+        if(this.inventario > 0 && this.munizioni < this.maxmunizioni)
+        {
+            this.Step("Ricarica","_ricarica1");
+            setTimeout(() => {this.Step("Ricarica","_ricarica2")},1000);
+            setTimeout(() => {this.Step("Armi","")},2000);
+        }
+        else if(this.inventario == 0)
+        {
+            PiuInfo.style.color = "red";
+            setTimeout(() => {PiuInfo.style.color = "white";},1000);
+        }
+    }
+    Step(a,p)
+    {
+        ArmaInCanna.classList.add('slideOutDown');
+        setTimeout(() => {ArmaInCanna.setAttribute('src',`./Immagini/${a}/${this.nome}${p}.jpg`); ArmaInCanna.classList.remove('slideOutDown'); ArmaInCanna.classList.add('slideInUp'); if(p != ""){RumoriArma.textContent = `${this.Rumori[p.split('a')[2]]}`;} else{RumoriArma.textContent = "";}},500);
+        setTimeout(() => {ArmaInCanna.classList.remove('slideInUp');
+        if(p == "")
+        {   
+            let carica = this.maxmunizioni - this.munizioni;
+            if(this.inventario < carica)
+        {
+            this.munizioni += this.inventario;
+            this.inventario = 0;
+        }
+        else
+        {
+            this.inventario -= carica;
+            this.munizioni = this.maxmunizioni;
+        }
+            PiuInfo.textContent = `${this.munizioni}|${this.inventario}`;
+        }},1000);
+    }
+}
+class Mischia extends Arma
+{   
+    Spara()
+    {
+        if(this.munizioni == 1)
+        {
+            ArmaInCanna.setAttribute('src',`./Immagini/Armi/${this.nome}_attaccando.jpg`);
+            this.munizioni = 0;
+            setTimeout(() => {ArmaInCanna.setAttribute('src',`./Immagini/Armi/${this.nome}.jpg`);},100);
+        }
+        else
+        {
+            document.querySelector('#PienBarraMischia').style.backgroundColor = 'red';
+            setTimeout(() => {document.querySelector('#PienBarraMischia').style.backgroundColor = 'white';},1000);
+        }
+    }
+    Ricarica()
+    {   
+        BarraMischia.classList.add('BarraInCarica');
+        BarraMischia.addEventListener('animationend',() => this.Fatto());
+    }
+    Fatto()
+    {   
+        this.munizioni = 1; 
+        BarraMischia.classList.remove('BarraInCarica');
+        BarraMischia.removeEventListener('animationend',() => this.Fatto());
+    }
+}
+class Personaggio
+{   
+    constructor()
+    {
+        this._vita = 4;
+        this._velocità = 12.5;
+    }
+    set vita(vita)
+    {
+        this._vita = vita;
+    }
+    get vita()
+    {
+        return this._vita;
+    }
+    set velocità(boost)
+    {
+        this._velocità = boost;
+    }
+    get velocità()
+    {
+        return this._velocità;
+    }
+    Schiva()
+    {
+        ArmaInCanna.classList.add('slideOutRight');
+        setTimeout(() => {ArmaInCanna.classList.remove('slideOutRight')},400);
+    }
+    Muovi(verso,DatiDiPosizione)
+    {   
+        setTimeout(() => {if(DatiDiPosizione.Corri && DatiDiPosizione.posG <= 200 && DatiDiPosizione.posG >= 0 && !DatiDiPosizione.InPausa)
+        {
+        if(verso && DatiDiPosizione.posG < 200)
+        {
+            DatiDiPosizione.posG = DatiDiPosizione.posG + 1;
+            if(DatiDiPosizione.posG > DatiDiPosizione.posA)
+            {
+                DatiDiPosizione.distanza = DatiDiPosizione.distanza + 1;
+                DatiDiPosizione.distanzaAG = DatiDiPosizione.distanzaAG + 1;
+            }
+            else
+            {
+                DatiDiPosizione.distanza = DatiDiPosizione.distanza - 1;
+                DatiDiPosizione.distanzaAG = DatiDiPosizione.distanzaAG - 1;
+            }
+        }
+        else if(!verso && DatiDiPosizione.posG > 0)
+        {
+            DatiDiPosizione.posG = DatiDiPosizione.posG - 1;
+            if(DatiDiPosizione.posG < DatiDiPosizione.posA)
+            {
+                DatiDiPosizione.distanza = DatiDiPosizione.distanza + 1;
+                DatiDiPosizione.distanzaAG = DatiDiPosizione.distanzaAG + 1;
+            }
+            else
+            {
+                DatiDiPosizione.distanza = DatiDiPosizione.distanza - 1;
+                DatiDiPosizione.distanzaAG = DatiDiPosizione.distanzaAG - 1;
+            }
+        }
+        Boss.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanza,10)})`;
+        AttaccoNemico.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanzaAG,1)})`;
+        Segnaposto1.style.transform = `scale(${10/Math.max(DatiDiPosizione.posG,10)})`;
+        Segnaposto2.style.transform = `scale(${10/Math.max(200 - DatiDiPosizione.posG,10)})`;
+        this.Muovi(verso,DatiDiPosizione);
+    }
+    else
+    {   
+        return;
+    }},1000/this.velocità);
+}
+}
+class SaccoDiDati
+{
+    constructor(posG,posA,distanza,distanzaAG,Corri,Schivando,InMoto,AllAttacco,InPausa)
+    {
+        this._posG = posG;
+        this._posA = posA;
+        this._distanza = distanza;
+        this._distanzaAG = distanzaAG;
+        this._Corri = Corri;
+        this.Schivando = Schivando;
+        this._InMoto = InMoto;
+        this._AllAttacco = AllAttacco;
+        this._InPausa = InPausa;
+    }
+    set posG(nposG)
+    {
+        this._posG = nposG;
+    }
+    get posG()
+    {
+        return this._posG;
+    }
+    set posA(nposA)
+    {
+        this._posA = nposA;
+    }
+    get posA()
+    {
+        return this._posA;
+    }
+    set distanza(ndistanza)
+    {
+        this._distanza = ndistanza;
+    }
+    get distanza()
+    {
+        return this._distanza;
+    }
+    set distanzaAG(ndistanzaAG)
+    {
+        this._distanzaAG = ndistanzaAG;
+    }
+    get distanzaAG()
+    {
+        return this._distanzaAG;
+    }
+    set Corri(agg)
+    {
+        this._Corri = agg;
+    }
+    get Corri()
+    {
+        return this._Corri;
+    }
+    set Schivando(Schivando)
+    {
+        this._Schivando = Schivando;
+    }
+    get Schivando()
+    {
+        return this._Schivando;
+    }
+    set InMoto(InMoto)
+    {
+        this._InMoto = InMoto;
+    }
+    get InMoto()
+    {
+        return this._InMoto;
+    }
+    set AllAttacco(AllAttacco)
+    {
+        this._AllAttacco = AllAttacco;
+    }
+    get AllAttacco()
+    {
+        return this._AllAttacco;
+    }
+    set InPausa(stato)
+    {
+        this._InPausa = stato;
+    }
+    get InPausa()
+    {
+        return this._InPausa;
+    }
+}
+        </script>
+        <script>
+            const Quadrupletta = new Arma("Quadrupletta",16000,10,1,4,3000,false,"[####]",["BAM","KSH","CRRLCK"]);
+const DoppiaPistolaDaClown = new Arma("Doppia pistola da clown",6000,6,10,40,2000,false,"@ @",["Scherzetto!","crrt","f-flump"]);
+const SpargiSchegge = new Arma("Spargischegge",5000,20,10,40,1500,false,"|***|",["splsh!","fr-ln","fr-ln"]);
+const LanciaFiammeTriforcuto = new Arma("Lanciafiamme triforcuto",1500,8,20,80,1,true,"^ ^ ^",["FFFSH","","blblblbl..."]);
+const DistributoreDiPalline = new Arma("Distributore di palline",200,125,45,180,25,true,"I<br/>==O==<br/>I",["Boing!","tk","CRT-CRT-CRT"]);
+const SparaOssa = new Arma("Sparaossa",120,126,80,320,35,true,"I<br/>--X--<br/>I",["tln","tsh!","frrlll!"]);
+const FriggitriceDAssalto = new Arma("Friggitrice da assalto",300,112,50,200,30,true,"I<br/>~~(#)~~<br/>I",["tsn","ffssh","zzz..."]);
+const LanciaMiniRazzi = new Arma("Lanciaminirazzi",400,130,25,100,65,true,"‼<br/>≡≡Ø≡≡<br/>‼",["vsh!","c-clck","c-clck"]);
+const GeneratoreDaBattaglia = new Arma("Generatore da battaglia",3000,185,8,32,1000,false,"/ <br/>-·-<br/> /",["BZ","bng","clk-c-clk"]);
+const LanciaGranateDiPrecisione = new Arma("Lanciagranate di precisione",3500,175,5,20,1750,false,"|<br/>= ᴓ =<br/>|",["fln","k-cluk","k-cluk"]);
+const ManoAPistola = new Arma("Mano a pistola",2200,188,4,16,500,false,"ɵ",["Pium!","gnam!","gnam!"]);
+const CannoneDiCarroArmato = new Arma("Cannone di carro armato",5000,190,1,4,2000,false,"||<br/>≡≡O≡≡<br/>||",["POM","B-DSH","C-DSH"]);
+const SchiaffoTermico = new Mischia("Schiaffo termico",15000,5,1,0,45000,false,"▒▒",["BISHZ!"]);
+const GelatoSciolto = new Mischia("Gelato sciolto",12000,6,1,0,45000,false,"##",["splch"]);
+const BorsaTarocca = new Mischia("Borsa tarocca",10000,7,1,0,45000,false,"$$",["dsh"]);
+const CinturaDragone = new Mischia("Cintura dragone",14000,10,1,0,45000,false,"[#]",["U-DSH"]);
+const Armi = [Quadrupletta,DoppiaPistolaDaClown,SpargiSchegge,LanciaFiammeTriforcuto,DistributoreDiPalline,SparaOssa,FriggitriceDAssalto,LanciaMiniRazzi,GeneratoreDaBattaglia,LanciaGranateDiPrecisione,ManoAPistola,CannoneDiCarroArmato];
+const Mischie = [SchiaffoTermico,GelatoSciolto,BorsaTarocca,CinturaDragone];
+const MetalSkeletonCowBoy = new Nemico("Metal skeleton cowboy",0,0,"● ●","gray",["Non c'è spazio per tutt'e due in questo campo","Y-HAH!","Se solo fossi stato un pistolero più abile..."]);
+const IlRobotDelCartoneAnni80 = new Nemico("Il Robot del cartone anni 80",0,0,"<●>","red",["*spara un colpo energetico dall'occhio*","*ti osserva cadere a terra*","*non fa nulla*"]);
+const CartellonePubblicitarioConLeGambe = new Nemico("Cartellone pubblicitario con le gambe",0,0,"^$^","green",["ACQUISTA!","ACQUISTA!","ACQUISTA!"]);
+const PaperaCavalcaPappardelle = new Nemico("Papera cavalcapappardelle",0,0,"███","yellow",["Ti va un po' di...PASTA?","Muah-quaqua-quaqua-qua-qua!","Zzz..."]);
+const Nemici = [MetalSkeletonCowBoy,IlRobotDelCartoneAnni80,CartellonePubblicitarioConLeGambe,PaperaCavalcaPappardelle];
+let ShotgunEquipaggiato = new Arma();
+let AssaltoEquipaggiato = new Arma();
+let CecchinoEquipaggiato = new Arma();
+let MischiaEquipaggiata = new Mischia();
+const Protagonista = new Personaggio();
+let NemicoScelto = new Nemico();
+let difficoltà = 0;
+        </script>
+        <script>
+            let DatiDiPosizione = new SaccoDiDati(0,100,100,100,false,false,false,false,false);
+let RimaniQui = true;
+let stavaattaccando;
+let stavamuovendosi;
+let ComandoFuoco = 'Enter';
+let ComandoRicarica = ' ';
+let ComandoMuoviSu = 'ArrowUp';
+let ComandoMuoviGiù = 'ArrowDown';
+let ComandoSchiva = 'Shift';
+let Comando0 = '0';
+let Comando1 = "1";
+let Comando2 = '2';
+let Comando3 = '3';
+let MostraPosizioni = false;
+let MostraSuoni = true;
+let PannelloOpzioni = document.querySelector('#Opzioni');
+let BottoneSalva = document.querySelector('#Salva');
+let BottonePosizioni = document.querySelector('#MostraLePosizioni');
+let BottoneSuoni = document.querySelector('#MostraISuoni');
+let Boss = document.querySelector('#Nemico');
+let ArmaInCanna = document.querySelector('#Arma');
+let Mirino = document.querySelector('#Mirino');
+let PiuInfo = document.querySelector('#Info');
+let AttaccoNemico = document.querySelector('#Attacco');
+let BarraVita = document.querySelector('#Barra');
+let hp = document.querySelector('#HP');
+let BarraMischia = document.querySelector('#BarraMischia');
+let Segnaposto1 = document.querySelector('#S1');
+let Segnaposto2 = document.querySelector('#S2');
+let RumoriArma = document.querySelector('#Rumori');
+let FrasiNemico = document.querySelector('#Frasi');
+let PannelloPausa = document.querySelector('#Pausa');
+let PannelloConferma = document.querySelector('#Conferma');
+let BottoneSpara = document.querySelector("#Spara");
+let BottoneRicarica = document.querySelector("#Ricarica");
+let BottoneMuoviSu = document.querySelector("#MuoviSu");
+let BottoneMuoviGiù = document.querySelector("#MuoviGiù");
+let BottoneSchiva = document.querySelector("#Schiva");
+let BottoneMischia = document.querySelector("#Mischia");
+let BottoneShotgun = document.querySelector("#Shotgun");
+let BottoneAssalto = document.querySelector("#Assalto");
+let BottoneCecchino = document.querySelector("#Cecchino");
+function AggiornaImpostazioni()
+{   
+    if(window.localStorage.getItem("MostraSuoni") != null)
+    {
+        RumoriArma.style.color = "transparent";
+        BottoneSuoni.style.backgroundColor = 'red';
+        BottoneSuoni.textContent = 'x';
+    }
+    else
+    {
+        RumoriArma.style.color = "white";
+        BottoneSuoni.style.backgroundColor = 'green';
+        BottoneSuoni.textContent = '√';
+    }
+}
+function Salva()
+{   
+    AggiornaImpostazioni();
+    PannelloOpzioni.close();
+}
+function Reset()
+{
+    window.localStorage.removeItem("MostraSuoni");
+    AggiornaImpostazioni();
+    PannelloOpzioni.close();
+}
+function AggiornaMirino(ArmaEquipaggiata,distanza)
+{
+    if(ArmaEquipaggiata.portata >= distanza && Mirino.style.color != "red")
+    {
+        Mirino.style.color = 'red';
+    }
+    else if(ArmaEquipaggiata.portata < distanza && Mirino.style.color != "white")
+    {
+        Mirino.style.color = 'white';
+    }
+}
+function CambioArma(ArmaPresa,Spara,gap)
+{
+    ArmaInCanna.classList.add('slideOutDown');
+    if(Spara != undefined){clearInterval(Spara); Spara = undefined;}
+    if(gap != undefined){clearTimeout(gap); gap = undefined;}
+    setTimeout(() => {ArmaInCanna.setAttribute('src',`./Immagini/Armi/${ArmaPresa.nome}.jpg`);
+    ArmaInCanna.classList.remove('slideOutDown');
+    ArmaInCanna.classList.add('slideInUp');},500);
+    setTimeout(() => {ArmaInCanna.classList.remove('slideInUp');Mirino.innerHTML = ArmaPresa.mirino;if(ArmaPresa.rateo != 45000){PiuInfo.textContent = `${ArmaPresa.munizioni}|${ArmaPresa.inventario}`;} else{PiuInfo.textContent = ""};},1000);
+    return false;
+}
+function LampeggiaHP(colore)
+{
+    hp.style.backgroundColor = colore;
+    setTimeout(() => {hp.style.backgroundColor = 'white'; hp.style.color = colore},300);
+    setTimeout(() => {hp.style.backgroundColor = colore; hp.style.color = 'white'},600);
+    setTimeout(() => {hp.style.backgroundColor = 'white'; hp.style.color = colore},900);
+    setTimeout(() => {hp.style.backgroundColor = colore; hp.style.color = 'white'},1200);
+    setTimeout(() => {hp.style.backgroundColor = 'blue'},1500);
+}
+function Preso(ArmaPresa,NemicoScelto,distanza,muny)
+{
+    if(ArmaPresa.portata >= distanza && muny)
+    {
+        NemicoScelto.vita = NemicoScelto.vita - ArmaPresa.danni;
+        BarraVita.style.width = `${Math.pow(NemicoScelto.vita/NemicoScelto.maxvita,2)*30.875}vw`;
+        BarraVita.style.right = `${15.4375*(1 - Math.pow(NemicoScelto.vita/NemicoScelto.maxvita,2))}vw`;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+function Colpito(Protagonista,DatiDiPosizione,EccoloCheArriva)
+{
+    if(AttaccoNemico.style.color == NemicoScelto.coloreAttacco && DatiDiPosizione.distanzaAG <= 0 && !DatiDiPosizione.Schivando)
+    {
+        Protagonista.vita -= 1;
+        hp.textContent = `HP: ${Protagonista.vita}`;
+        LampeggiaHP('red');
+    }
+    DatiDiPosizione.distanzaAG = DatiDiPosizione.distanza;
+    AttaccoNemico.style.color = "transparent";
+    AttaccoNemico.style.transform = `scale(${Math.max(10/DatiDiPosizione.distanzaAG,1)})`;
+    clearInterval(EccoloCheArriva);
+}
+function PausaRiprendi(DatiDiPosizione,NemicoScelto)
+{   
+    if(!DatiDiPosizione.InPausa)
+    {
+        DatiDiPosizione.InPausa = true;
+        stavaattaccando = DatiDiPosizione.AllAttacco;
+        stavamuovendosi = DatiDiPosizione.InMoto;
+        if(BarraMischia.style.width != "20vw")
+        {
+            BarraMischia.style.animationPlayState = "paused";
+        }
+        PannelloPausa.showModal();
+    }
+    else
+    {
+        DatiDiPosizione.InPausa = false;
+        if(stavaattaccando)
+        {   
+            DatiDiPosizione.AllAttacco = true;
+            NemicoScelto.Attacco(DatiDiPosizione); 
+        }
+        if(stavamuovendosi)
+        {   
+            NemicoScelto.Moto(DatiDiPosizione);
+        }
+          if(BarraMischia.style.width != "20vw")
+        {
+            BarraMischia.style.animationPlayState = "running";
+        }
+        PannelloPausa.close();
+    }
+}
+function Fine(Partita,DatiDiPosizione,MirID,Spara,vittoria,NemicoScelto)
+{
+        clearInterval(Partita);
+        DatiDiPosizione.InPausa = true;
+        PiuInfo.style.color = "transparent";
+        BarraMischia.style.backgroundColor = "transparent";
+        document.querySelector('#PienBarraMischia').style.backgroundColor = "transparent";
+        if(MirID != undefined)
+        {
+            clearInterval(MirID);
+        }
+        if(Spara != undefined)
+        {
+            clearInterval(Spara)
+        }
+        Mirino.style.color = "transparent";
+        AttaccoNemico.style.color = "transparent";
+        if(vittoria)
+        {   
+            document.querySelector('#SchermataPausa').style.color = "green";
+            document.querySelector('#SchermataPausa').innerHTML = `VITTORIA! <button type = "button" id = "Riprendi" onclick = "event.stopPropagation(); PausaRiprendi(DatiDiPosizione,NemicoScelto);" style = "opacity: 0.5" disabled>Riprendi</button>
+            <button type = "button" id = "Riprova" onclick = "if(!RimaniQui){RimaniQui = true;} PannelloConferma.showModal()">Riprova</button>
+            <button type="button" id = "BottoneOpzioni" onclick="PannelloOpzioni.showModal();">Opzioni</button>
+            <button type = "button" id = "Abbandona" onclick = "if(RimaniQui){RimaniQui = false;} PannelloConferma.showModal()">Gioca ancora</button>`;
+            Boss.style.transform = `scale(1)`;
+            Boss.src = `./Immagini/Animazioni/Animazione Vittoria ${NemicoScelto.nome}_1.jpg`;
+            setTimeout(() =>{FrasiNemico.textContent = `${NemicoScelto.Frasi[2]}`; ArmaInCanna.src = `./Immagini/Animazioni/Animazione Vittoria contro ${NemicoScelto.nome}_1.jpg`;},500);
+            if(window.localStorage.getItem(`${NemicoScelto.nome}`) == null || difficoltà > window.localStorage.getItem(`${NemicoScelto.nome}`))
+            {
+                window.localStorage.setItem(`${NemicoScelto.nome}`,`${difficoltà}`);
+            }
+            setTimeout(() => {ArmaInCanna.src = `./Immagini/Animazioni/Animazione Vittoria contro ${NemicoScelto.nome}_2.jpg`; Boss.src = `./Immagini/Animazioni/Animazione Vittoria ${NemicoScelto.nome}_2.jpg`;},1500);
+            setTimeout(() => {PannelloPausa.showModal();},3000);
+        }
+        else
+        {   
+            document.querySelector('#SchermataPausa').style.color = "red";
+            document.querySelector('#SchermataPausa').innerHTML = `Game Over <button type = "button" id = "Riprendi" onclick = "event.stopPropagation(); PausaRiprendi(DatiDiPosizione,NemicoScelto);" style = "opacity: 0.5" disabled>Riprendi</button>
+            <button type = "button" id = "Riprova" onclick = "if(!RimaniQui){RimaniQui = true;} PannelloConferma.showModal()">Riprova</button>
+            <button type="button" id = "BottoneOpzioni" onclick="PannelloOpzioni.showModal();">Opzioni</button>
+            <button type = "button" id = "Abbandona" onclick = "if(RimaniQui){RimaniQui = false;} PannelloConferma.showModal()">Gioca ancora</button>`;
+            ArmaInCanna.classList.add('slideOutDown');
+            setTimeout(() =>{FrasiNemico.textContent = `${NemicoScelto.Frasi[1]}`},500);
+            setTimeout(() => {ArmaInCanna.classList.remove('slideOutDown'); ArmaInCanna.classList.add('slideInUp'); ArmaInCanna.src = "./Immagini/Animazioni/Animazione Sconfitta.jpg"},500);
+            setTimeout(() => {ArmaInCanna.classList.remove('slideInUp')},1000);
+            setTimeout(() => {PannelloPausa.showModal();},3000);
+        }
+}
+function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEquipaggiato,MischiaEquipaggiata,NemicoScelto,DatiDiPosizione)
+{
+    let ArmaPresa = AssaltoEquipaggiato;
+    Boss.setAttribute('src',`./Immagini/Nemici/${NemicoScelto.nome}.jpg`);
+    ArmaInCanna.setAttribute('src',`./Immagini/Armi/${ArmaPresa.nome}.jpg`);
+    Mirino.innerHTML = ArmaPresa.mirino;
+    AttaccoNemico.textContent = NemicoScelto.attacco;
+    PiuInfo.textContent = `${ArmaPresa.munizioni}|${ArmaPresa.inventario}`;
+    NemicoScelto.velocità = Math.pow(1.5,difficoltà)*10;
+    NemicoScelto.vita = Math.pow(1.2,difficoltà)*300000;
+    NemicoScelto.maxvita = NemicoScelto.vita;
+    Boss.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanza,10)})`;
+    AttaccoNemico.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanzaAG,1)})`;
+    Segnaposto1.style.transform = `scale(${10/Math.max(DatiDiPosizione.posG,10)})`;
+    Segnaposto2.style.transform = `scale(${10/Math.max(200 - DatiDiPosizione.posG,10)})`;
+    let Colpo = false;
+    let InCarica = false;
+    let Spara;
+    let Partita;
+    let MirID;
+    let muny;
+    let gap;
+    let PuoSchivare = true;
+    let colpito;
+    let risparo = true;
+    let EccoloCheArriva;
+    let Dotazione = [ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEquipaggiato];
+    AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
+    BottoneMischia.addEventListener('click', (event) => {event.stopPropagation(); BottoneMischia.style.opacity = "1"; setTimeout(() => {BottoneMischia.style.opacity = "0.5"},100); if(!DatiDiPosizione.InPausa){
+            if(ArmaPresa != MischiaEquipaggiata && !InCarica)
+            {
+            Colpo = CambioArma(MischiaEquipaggiata,Spara,gap,risparo);
+            risparo = true;
+            ArmaPresa = MischiaEquipaggiata;
+            if(MirID == undefined)
+                {
+                    AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
+                }
+            }}});
+    BottoneShotgun.addEventListener('click',(event) => {event.stopPropagation(); BottoneShotgun.style.opacity = "1"; setTimeout(() => {BottoneShotgun.style.opacity = "0.5"},100);  if(!DatiDiPosizione.InPausa){
+                            if(ArmaPresa != ShotgunEquipaggiato && !InCarica)
+                {
+            Colpo = CambioArma(ShotgunEquipaggiato,Spara,gap,risparo);
+            risparo = true;
+            ArmaPresa = ShotgunEquipaggiato;
+            if(MirID == undefined)
+                {
+                    AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
+                }
+            }}});
+    BottoneAssalto.addEventListener('click',(event) => {event.stopPropagation(); BottoneAssalto.style.opacity = "1"; setTimeout(() => {BottoneAssalto.style.opacity = "0.5"},100);  if(!DatiDiPosizione.InPausa){
+                if(ArmaPresa != AssaltoEquipaggiato && !InCarica)
+                {
+            Colpo = CambioArma(AssaltoEquipaggiato,Spara,gap,risparo);
+            risparo = true;
+            ArmaPresa = AssaltoEquipaggiato;
+            if(MirID == undefined)
+                {
+                    AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
+                }
+            }}});
+    BottoneCecchino.addEventListener('click',(event) => {event.stopPropagation(); BottoneCecchino.style.opacity = "1"; setTimeout(() => {BottoneCecchino.style.opacity = "0.5"},100);  if(!DatiDiPosizione.InPausa){
+                if(ArmaPresa != CecchinoEquipaggiato && !InCarica)
+                {
+            Colpo = CambioArma(CecchinoEquipaggiato,Spara,gap,risparo);
+            risparo = true;
+            ArmaPresa = CecchinoEquipaggiato;
+            if(MirID == undefined)
+                {
+                    AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
+                }
+            }}});
+    BottoneRicarica.addEventListener('click',(event) => {event.stopPropagation(); BottoneRicarica.style.opacity = "1"; setTimeout(() => {BottoneRicarica.style.opacity = "0.5"},100);  if(!DatiDiPosizione.InPausa){
+            if(ArmaPresa != MischiaEquipaggiata && !InCarica)
+            {   
+                InCarica = true;
+                ArmaPresa.Ricarica();
+                setTimeout(() => {InCarica = false;},3000);
+            }}});
+    BottoneSchiva.addEventListener('click',(event) => {event.stopPropagation(); BottoneSchiva.style.opacity = "1"; setTimeout(() => {BottoneSchiva.style.opacity = "0.5"},100); if(!DatiDiPosizione.InPausa){
+                if(!DatiDiPosizione.Schivando && PuoSchivare)
+                {  
+                   DatiDiPosizione.Schivando = true;
+                   PuoSchivare = false;
+                   Protagonista.Schiva(); 
+                   setTimeout(() => {DatiDiPosizione.Schivando = false;},400);
+                   setTimeout(() => {PuoSchivare = true;},1000);
+                }}});
+    BottoneSpara.addEventListener('touchstart',(event) => {event.stopPropagation(); BottoneSpara.style.opacity = "1"; if(!DatiDiPosizione.InPausa){
+            if(!Colpo && !InCarica && risparo)
+            {   
+                muny = ArmaPresa.munizioni > 0;
+                ArmaPresa.Spara();
+                colpito = Preso(ArmaPresa,NemicoScelto,DatiDiPosizione.distanza,muny);
+                if(NemicoScelto.vita <= 0)
+                {   
+                    Fine(Partita,DatiDiPosizione,MirID,Spara,true,NemicoScelto);
+                    return;
+                }
+                Colpo = true;
+            if(ArmaPresa.altorateo)
+            {   
+                Spara = setInterval(() => {  
+                    muny = ArmaPresa.munizioni > 0;
+                    ArmaPresa.Spara();
+                    Preso(ArmaPresa,NemicoScelto,DatiDiPosizione.distanza,muny);
+                    if(NemicoScelto.vita <= 0)
+                    {   
+                        Fine(Partita,DatiDiPosizione,MirID,Spara,true,NemicoScelto);
+                        return;
+                    }
+            },ArmaPresa.rateo + 100);
+            }
+            else
+            {   
+                risparo = false;
+                gap = setTimeout(() => {risparo = true;},ArmaPresa.rateo + 100);
+                if(ArmaPresa == MischiaEquipaggiata)
+                {
+                    ArmaPresa.Ricarica();
+                if(colpito)
+                {
+                    Dotazione.forEach(A => {A.inventario = A.inventario + 3*A.maxmunizioni;});
+                }
+                }
+            }
+        }}
+        else
+        {
+            Colpo = false;
+            if(ArmaPresa.altorateo)
+            {
+                if(Spara != undefined)
+                {
+                    clearInterval(Spara);
+                    Spara = undefined;
+                }
+            }
+        }});
+    BottoneMuoviSu.addEventListener('touchstart',(event) => {event.stopPropagation(); BottoneMuoviSu.style.opacity = "1"; if(!DatiDiPosizione.InPausa){
+                if(!DatiDiPosizione.Corri)
+                {
+                    ArmaInCanna.classList.add('shake');
+                    DatiDiPosizione.Corri = true;
+                    Protagonista.Muovi(true,DatiDiPosizione);
+                    if(MirID == undefined)
+                    {
+                        MirID = setInterval(() => {AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza); if(!DatiDiPosizione.Corri && !DatiDiPosizione.InMoto){clearInterval(MirID); MirID = undefined;}},10);
+                    }
+                }}
+            else
+            {
+                DatiDiPosizione.Corri = false;
+                ArmaInCanna.classList.remove('shake');
+            }});
+    BottoneMuoviGiù.addEventListener('touchstart',(event) => {event.stopPropagation(); BottoneMuoviGiù.style.opacity = "1"; if(!DatiDiPosizione.InPausa){
+                if(!DatiDiPosizione.Corri)
+                {
+                    ArmaInCanna.classList.add('shake');
+                    DatiDiPosizione.Corri = true;
+                    Protagonista.Muovi(false,DatiDiPosizione);
+                    if(MirID == undefined)
+                    {
+                        MirID = setInterval(() => {AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza); if(!DatiDiPosizione.Corri && !DatiDiPosizione.InMoto){clearInterval(MirID); MirID = undefined;}},10);
+                    }
+                }}
+                else
+                {
+                    DatiDiPosizione.Corri = false;
+                    ArmaInCanna.classList.remove('shake');
+                }});
+    BottoneMuoviSu.addEventListener('touchend',(event) => {event.stopPropagation(); BottoneMuoviSu.style.opacity = "0.5"; DatiDiPosizione.Corri = false; ArmaInCanna.classList.remove('shake');});
+    BottoneMuoviGiù.addEventListener('touchend',(event) => {event.stopPropagation(); BottoneMuoviGiù.style.opacity = "0.5"; DatiDiPosizione.Corri = false; ArmaInCanna.classList.remove('shake');});
+    BottoneSpara.addEventListener('touchend',(event) => {event.stopPropagation(); BottoneSpara.style.opacity = "0.5";
+                    Colpo = false;
+                    if(ArmaPresa.altorateo)
+                    {
+                        if(Spara != undefined)
+                        {
+                            clearInterval(Spara);
+                            Spara = undefined;
+                        }
+                    }
+                });
+    document.addEventListener('click',(event) => {event.stopPropagation(); if(!DatiDiPosizione.InPausa){PausaRiprendi(DatiDiPosizione,NemicoScelto)}});
+    Partita = setInterval(() => {
+        if(Protagonista.vita == 0)
+        {
+            clearInterval(Partita);
+        }
+        else
+        {
+        if(Math.random() < 0.5 && !DatiDiPosizione.AllAttacco)
+        {
+            NemicoScelto.AllAttacco(DatiDiPosizione);
+            EccoloCheArriva = setInterval(() => {if(!DatiDiPosizione.AllAttacco){Colpito(Protagonista,DatiDiPosizione,EccoloCheArriva); if(Protagonista.vita == 0){Fine(Partita,DatiDiPosizione,MirID,Spara,false,NemicoScelto);}}},10); 
+        }
+        else
+        {   
+            if(!DatiDiPosizione.InPausa)
+            {
+            NemicoScelto.Moto(DatiDiPosizione);
+            if(MirID == undefined)
+            {
+                MirID = setInterval(() => {AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza); if(!DatiDiPosizione.Corri && !DatiDiPosizione.InMoto){clearInterval(MirID); MirID = undefined;}},10);
+            }
+            }
+        }
+        }
+    },4000/difficoltà);
+}
+function VaiVaiVai()
+{
+    Nemici.forEach(N => {if(sessionStorage.getItem("Nemico scelto") == N.nome){NemicoScelto = N;}});
+    Armi.forEach(A => {if(sessionStorage.getItem("ShotgunEquipaggiato") == A.nome){ShotgunEquipaggiato = A;} else if (sessionStorage.getItem("AssaltoEquipaggiato") == A.nome){AssaltoEquipaggiato = A;} else if (sessionStorage.getItem("CecchinoEquipaggiato") == A.nome){CecchinoEquipaggiato = A;}});
+    Mischie.forEach(M => {if(sessionStorage.getItem("MischiaEquipaggiata") == M.nome){MischiaEquipaggiata = M;}})
+    difficoltà = Number(sessionStorage.getItem("Difficoltà"));
+    AggiornaImpostazioni();
+    Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEquipaggiato,MischiaEquipaggiata,NemicoScelto,DatiDiPosizione);
+}
+        </script>
     </body>
 </html>

@@ -2,19 +2,99 @@
 <html lang = "it">
     <head>
         <meta charset = "UTF-8"/>
-        <meta name = "videogame" content = "width=device-width, initial-scale=1.0"/>
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <title>Run and Attack Madly</title>
-        <link rel = "stylesheet" type = "text/css" href="Aspetto.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <style>
+            *{
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+header{
+    text-align: center;
+}
+h1{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: red;
+    text-decoration-color: white;
+    font-size: 7vw;
+    font-weight: bold;
+}
+h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: 3.2vw;
+}
+h6{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 2vw;
+    text-align: center;
+    position: absolute;
+    top: 70vh;
+    left: 27%;
+}
+.contscelte{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(1fr);
+    margin: 0 auto;
+}
+.BoxScelta{
+    background-color: black;
+    display: flex;
+    padding: 0.2em;
+    border-radius: 1em;
+    font: "Fira Sans",serif;
+    font-size: 1.1vw;
+    text-align: center;
+    color: white;
+    margin: 0.2em;
+}
+#Conferma{
+    width: 20vw;
+    height: 12.8vw;
+    background: blue;
+    color: white;
+    font-size: 2.4vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+.Anteprima{
+    width: 15vw;
+    height: 15vw;
+    object-fit: contain;
+}
+.Centratore
+{
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+@keyframes fadeIn{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+.fadeIn{
+    animation: fadeIn 1s ease-in-out;
+}
+        </style>
         <script>
-            document.addEventListener('click', function(event){window.location.href = "SchermataOpzioni.html";});
+            document.addEventListener('click', function(event){window.location.href = "./SchermataOpzioni.html";});
         </script>
     </head>
-    <body style = "background: black">
+    <body>
         <header>
-            <h1 class = "animated fadeIn" translate = "no">Run and Attack Madly</h1>
-            <h2 class = "animated fadeIn" style = "font-style: italic">Lasciate ogni speranza voi che loggate</h2>
+            <h1 class = "fadeIn" translate = "no">Run and Attack Madly</h1>
+            <h2 class = "fadeIn" style = "font-style: italic">Lasciate ogni speranza voi che loggate</h2>
         </header>
-        <h6 class = "animated fadeIn infinite">Premi un tasto qualsiasi per continuare</h6>
+        <h6 class = "fadeIn" style = "animation-iteration-count: infinite">Premi un tasto qualsiasi per continuare</h6>
     </body>
 </html>
