@@ -43,7 +43,7 @@ h4{
     font-size: 4vw;
     z-index: 2;
     position: absolute;
-    bottom: 27vh;
+    bottom: 20vh;
     left: 40%;
     right: 40%;
 }
@@ -958,16 +958,6 @@ let difficoltà = 0;
 let RimaniQui = true;
 let stavaattaccando;
 let stavamuovendosi;
-let ComandoFuoco = 'Enter';
-let ComandoRicarica = ' ';
-let ComandoMuoviSu = 'ArrowUp';
-let ComandoMuoviGiù = 'ArrowDown';
-let ComandoSchiva = 'Shift';
-let Comando0 = '0';
-let Comando1 = "1";
-let Comando2 = '2';
-let Comando3 = '3';
-let MostraPosizioni = false;
 let MostraSuoni = true;
 let PannelloOpzioni = document.querySelector('#Opzioni');
 let BottoneSalva = document.querySelector('#Salva');
@@ -1129,6 +1119,8 @@ function Fine(Partita,DatiDiPosizione,MirID,Spara,vittoria,NemicoScelto)
         }
         Mirino.style.color = "transparent";
         AttaccoNemico.style.color = "transparent";
+        document.querySelectorAll(".Comandi").forEach(B => {B.style.opacity = "0";});
+        document.querySelectorAll(".CambioArmi").forEach(B => {B.style.opacity = "0";});
         if(vittoria)
         {   
             document.querySelector('#SchermataPausa').style.color = "green";
