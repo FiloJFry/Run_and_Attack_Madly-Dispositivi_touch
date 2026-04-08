@@ -258,7 +258,7 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
                     AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
                 }
             }}});
-    BottoneRicarica.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!DatiDiPosizione.InPausa){BottoneRicarica.style.opacity = "1"; setTimeout(() => {BottoneRicarica.style.opacity = "0.5";},100);
+    BottoneRicarica.addEventListener('touchstart',(event) => {event.stopPropagation(); BottoneRicarica.style.opacity = "1"; setTimeout(() => {BottoneRicarica.style.opacity = "0.5";},100);  if(!DatiDiPosizione.InPausa){
             if(ArmaPresa != MischiaEquipaggiata && !InCarica)
             {   
                 InCarica = true;

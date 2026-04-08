@@ -1,0 +1,41 @@
+@keyframes tornaSu{
+    from{
+        transform: translateY(20vw);
+    }
+    to{
+        transform: translateY(0vw);
+    }
+}
+@keyframes vaiGiù{
+    to{
+        transform: translateY(20vw);
+    }
+}
+@keyframes scattaDestra{
+    to{
+        transform: translateX(25vw);
+    }
+}
+@keyframes scuoti{
+    0%{
+        transform: translateX(3vw);
+    }
+    50%{
+        transform: translateX(-3vw);
+    }
+    100%{
+        transform: translateX(3vw);
+    }
+}
+.slideInUp{
+    animation: tornaSu 0.5s ease-in-out;
+}
+.slideOutDown{
+    animation: vaiGiù 0.5s ease-in-out;
+}
+.shake{
+    animation: scuoti 1s infinite ease-in-out;
+}
+.slideOutRight{
+    animation: scattaDestra 0.4s ease-in-out;
+}
