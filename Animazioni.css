@@ -27,6 +27,14 @@
         transform: translateX(3vw);
     }
 }
+@keyframes blipblip{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
 .slideInUp{
     animation: tornaSu 0.5s ease-in-out;
 }
@@ -38,4 +46,7 @@
 }
 .slideOutRight{
     animation: scattaDestra 0.4s ease-in-out;
+}
+.fadeIn{
+    animation: blipblip 1s ease-in-out;
 }
