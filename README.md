@@ -10,3 +10,7 @@ Run and Attack Madly è uno sparatutto in prima persona incentrato sulle battagl
 - Clicca sull'URL fornito dall'app,poi su "navigate" nel menù a tendina così aperto N.B.: per far ciò non è necessario il Wi-Fi
 - Una volta trovata la schermata con tutti i file di gioco,fai doppio click su SchermataAvvio.html per aprire il gioco
 - Buon divertimento!
+# Come faccio ad "estrarre correttamente" una cartella?
+- Tieni premuto lo zip e,dal menù a tendina,seleziona "estrai". Apparirà una cartella omonima accanto allo zip
+- Aprila e,se trovi una cartella omonima alla precedente,sposta quest'ultima nella cartella madre
+- Se il dispositivo ti chiede che fare,opta per "sostituisci"
