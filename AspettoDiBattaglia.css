@@ -200,6 +200,7 @@ h4{
     -moz-user-select: none;  
     -ms-user-select: none;  
     user-select: none; 
+    z-index: 3;
 }
 .CambioArmi{
     width: 7vw;
@@ -216,6 +217,7 @@ h4{
     -moz-user-select: none;  
     -ms-user-select: none;  
     user-select: none; 
+    z-index: 3;
 }
 .movimento{
     background-color:aqua;
