@@ -1,0 +1,289 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    overflow: hidden;
+}
+h4{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+}
+#Rumori{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3.2vw;
+    position: absolute;
+    left: 35vw;
+    top: 40vh;
+    z-index: 2;
+}
+#Frasi{
+    font: italic small-caps 2.4vw;
+    color: white;
+    position: absolute;
+    left: 70vw;
+    top: 0;
+    z-index: 3;
+}
+#Attacco{
+    font-size: 16vw;
+    position: absolute;
+    z-index: 1;
+    bottom: -0.75em;
+}
+#Mirino{
+    text-align: center;
+    font-size: 4vw;
+    z-index: 2;
+    position: absolute;
+    bottom: 27vh;
+    left: 40%;
+    right: 40%;
+}
+#Arma{
+    width: 20vw;
+    height: 16vw;
+    object-fit: contain;
+    position: absolute;
+    z-index: 2;
+    bottom: 0vh;
+    left: 40%;
+}
+#Nemico
+{
+    width: 36vw;
+    height: 30vw;
+    position: absolute;
+    z-index: 0;
+    object-fit: contain;
+    top: 16vh;
+}
+#HP{
+    border: 0.2em solid white;
+    background-color: blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4vw;
+    font-weight: bold;
+    color: white;
+    margin: 2vw;
+    position: absolute;
+    bottom: 52vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4vw;
+    position: absolute;
+    z-index: 2;
+}
+#Info{
+    width: 8vw;
+    padding: 1vw;
+    position: absolute;
+    bottom: 64vh;
+    z-index: 2;
+    color: white;
+    fonT-size: 2.5vw;
+    left: 78vw;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#PienBarra{
+    width: 32vw;
+    height: 5vw;
+    object-fit: contain;
+    border: 0.6vw solid white;
+    background-color: black;
+    position: absolute;
+    z-index: 1;
+    left: 0sem;
+}
+#Barra{
+    width: 30.875vw;
+    height: 3.85vw;
+    object-fit: contain;
+    background-color: red;
+    z-index: 2;
+    position: relative;
+}
+#PienBarraMischia{
+    width: 20vw;
+    height: 3vw;
+    background-color: white;
+    position: absolute;
+    z-index: 2;
+    bottom: 55vh;
+    margin: 1vw;
+    right: 0;
+}
+#BarraMischia{
+    width: 20vw;
+    height: 3vw;
+    background-color: blue;
+    position: absolute;
+    z-index: 3;
+    bottom: 55vh;
+    margin: 1vw;
+    right: 0;
+}
+#S1{
+    font-size: 12vw;
+    color: green;
+    position: absolute;
+    bottom: 33vh;
+}
+#S2{
+    font-size: 12vw;
+    color: purple;
+    position: absolute;
+    right: 0vw;
+    bottom: 33vh;
+}
+.Centratore
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+    flex-direction: column;
+}
+#SchermataPausa{
+    background-color: black;
+    border: 0.1vw solid white;
+    padding: 2.4vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 4vw;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+#SchermataConferma{
+    background-color: black;
+    border: 0.1vw solid white;
+    padding: 2.4vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 4vw;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+#Riprendi{
+    background-color: blue;
+}
+#Sì{
+    background-color: red;
+}
+#No{
+    background-color: blue;
+}
+#Riprova{
+    background-color: green;
+}
+#Abbandona{
+    background-color: red;
+}
+#BottoneOpzioni{
+    background-color: orange;
+}
+.Comandi{
+    width: 10vw;
+    height: 10vw;
+    color: white;
+    opacity: 0.5;
+    border-radius: 0.5vw;
+    position: absolute;
+    font-size: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none;  
+    user-select: none; 
+}
+.CambioArmi{
+    width: 7vw;
+    height: 7vw;
+    color: black;
+    opacity: 0.5;
+    border-radius: 0.5vw;
+    position: absolute;
+    font-size: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none;  
+    user-select: none; 
+}
+.movimento{
+    background-color:aqua;
+}
+#Schiva{
+    background-color:blue;
+    left: 17vw;
+    bottom: 12.5vh
+}
+#Spara{
+    background-color:red;
+    border-color: red;
+    right: 18vw;
+    bottom: 25vh;
+}
+#Ricarica{
+    background-color:green;
+    right: 18vw;
+    bottom: 0vh;
+}
+#MuoviSu{
+    left: 4vw;
+    bottom: 25vh;
+}
+#MuoviGiù{
+    left: 4vw;
+    bottom: 0vh;
+}
+#Mischia{
+    right: 0vw;
+    bottom: 5vh;
+}
+#Shotgun{
+    right: 7.5vw;
+    bottom: 20vh;
+}
+#Assalto{
+    right: 0vw;
+    bottom: 20vh;
+}
+#Cecchino{
+    right: 7.5vw;
+    bottom: 5vh;
+}
+@keyframes CaricaBarra
+{
+    from
+    {
+        width: 0vw;
+    }
+    to
+    {
+        width: 20vw;
+    }
+}
+.BarraInCarica{
+    animation: CaricaBarra 45s linear;
+}
+.slideOutDown{
+    animation-duration: 0.5s;
+}
+.slideInUp{
+    animation-duration: 0.5s;
+}
+.slideOutRight{
+    animation-duration: 0.4s;
+}
+.shake{
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+}
