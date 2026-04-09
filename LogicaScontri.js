@@ -155,8 +155,8 @@ function Fine(Partita,DatiDiPosizione,MirID,Spara,vittoria,NemicoScelto)
         }
         Mirino.style.color = "transparent";
         AttaccoNemico.style.color = "transparent";
-        document.querySelectorAll(".Comandi").forEach(B => {B.style.opacity = "0";});
-        document.querySelectorAll(".CambioArmi").forEach(B => {B.style.opacity = "0";});
+        setTimeout(() => {document.querySelectorAll(".Comandi").forEach(B => {B.style.opacity = "0";});
+        document.querySelectorAll(".CambioArmi").forEach(B => {B.style.opacity = "0";});},400);
         if(vittoria)
         {   
             document.querySelector('#SchermataPausa').style.color = "green";
