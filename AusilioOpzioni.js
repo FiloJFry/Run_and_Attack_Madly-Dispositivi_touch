@@ -2,6 +2,7 @@ let MostraSuoni = true;
 let PannelloOpzioni = document.querySelector('#Opzioni');
 let BottoneSalva = document.querySelector('#Salva');
 let BottoneSuoni = document.querySelector('#MostraISuoni');
+let PannelloTutorial = document.querySelector('#Tutorial');
 function AggiornaTasti()
 {   
     if(window.localStorage.getItem('MostraSuoni') != null)

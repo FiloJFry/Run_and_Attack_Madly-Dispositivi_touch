@@ -1,5 +1,4 @@
 let BottoneConferma = document.querySelector('#Conferma');
-let PannelloTutorial = document.querySelector('#Tutorial');
 function SegnaRisposta(classe,id)
 {
     document.querySelectorAll(`${classe}`).forEach(Blocco => {Blocco.style.backgroundColor = "black"});
