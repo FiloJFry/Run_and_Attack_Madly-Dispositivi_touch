@@ -15,3 +15,12 @@ function AggiornaTasti()
         BottoneSuoni.textContent = '√';
     }
 }
+function Salva()
+{     
+    window.location.reload();
+}
+function Reset()
+{
+    window.localStorage.removeItem("MostraSuoni");
+    window.location.reload();
+}

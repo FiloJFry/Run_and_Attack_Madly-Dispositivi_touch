@@ -35,18 +35,19 @@
         opacity: 1;
     }
 }
-.slideInUp{
+.TornaSu{
     animation: tornaSu 0.5s ease-in-out;
 }
-.slideOutDown{
+.VaiGiù{
     animation: vaiGiù 0.5s ease-in-out;
 }
-.shake{
+.Scuoti{
     animation: scuoti 0.5s infinite ease-in-out;
+    animation-composition: add;
 }
-.slideOutRight{
+.Schivata{
     animation: scattaDestra 0.4s ease-in-out;
 }
-.fadeIn{
+.BlipBlip{
     animation: blipblip 1s ease-in-out;
 }
