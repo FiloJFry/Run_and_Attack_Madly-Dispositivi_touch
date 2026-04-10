@@ -115,8 +115,12 @@ function Colpito(Protagonista,DatiDiPosizione,EccoloCheArriva)
         Protagonista.vita -= 1;
         hp.textContent = `HP: ${Protagonista.vita}`;
         LampeggiaHP('red');
+        DatiDiPosizione.distanzaAG = DatiDiPosizione.distanza;
+        AttaccoNemico.style.color = "transparent";
+        AttaccoNemico.style.transform = `scale(${Math.max(10/DatiDiPosizione.distanzaAG,1)})`;
+        clearInterval(EccoloCheArriva); 
     }
-    if(DatiDiPosizione.distanzaAG == 0)
+    else if(!DatiDiPosizione.InPausa)
     {
         DatiDiPosizione.distanzaAG = DatiDiPosizione.distanza;
         AttaccoNemico.style.color = "transparent";

@@ -127,7 +127,7 @@ class Nemico
             }
         }
         spazio -= 1;
-        Boss.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanza,10)})`;
+        Boss.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanza,10)})`;      
         if(AttaccoNemico.style.color == "transparent")
         {
             DatiDiPosizione.distanzaAG = DatiDiPosizione.distanza;
