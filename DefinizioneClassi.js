@@ -70,7 +70,6 @@ class Nemico
             Boss.setAttribute('src',`./Immagini/Nemici/${this.nome}_attaccando.jpg`);
             FrasiNemico.textContent = `${this.Frasi[0]}`;
             AttaccoNemico.style.color = this.coloreAttacco;
-                        AttaccoNemico.style.color = this.coloreAttacco;
             let t = 0;
             let dice = setInterval(() => {if(!DatiDiPosizione.InPausa){t += 10; if(t >= 1000){Boss.setAttribute('src',`./Immagini/Nemici/${this.nome}.jpg`); FrasiNemico.textContent = ""; clearInterval(dice)}}},10);
             this.Attacco(DatiDiPosizione);
