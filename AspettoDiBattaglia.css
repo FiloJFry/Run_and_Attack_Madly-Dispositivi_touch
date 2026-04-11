@@ -1,5 +1,9 @@
 *{
     box-sizing: border-box;
+    -webkit-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none;  
+    user-select: none;
 }
 body{
     background-color: black;
@@ -195,11 +199,7 @@ h4{
     font-size: 7vw;
     display: flex;
     justify-content: center;
-    align-items: center;
-    -webkit-user-select: none; 
-    -moz-user-select: none;  
-    -ms-user-select: none;  
-    user-select: none; 
+    align-items: center; 
     z-index: 3;
 }
 .CambioArmi{
@@ -213,10 +213,6 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-user-select: none; 
-    -moz-user-select: none;  
-    -ms-user-select: none;  
-    user-select: none; 
     z-index: 3;
 }
 .movimento{
