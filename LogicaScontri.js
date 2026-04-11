@@ -55,6 +55,10 @@ function Pulisci(Spara,gap,risparo)
     }
     risparo = true;
 }
+function Rifornisci()
+{
+    Dotazione.forEach(A => {A.inventario = A.inventario + 3*A.maxmunizioni;});
+}
 function CambioArma(ArmaPresa,Spara,gap,DatiDiPosizione)
 {
     ArmaInCanna.classList.add('VaiGiù');
