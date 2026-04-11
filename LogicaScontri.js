@@ -137,6 +137,9 @@ function PausaRiprendi(DatiDiPosizione,NemicoScelto)
         stavamuovendosi = DatiDiPosizione.InMoto;
         ArmaInCanna.style.animationPlayState = "paused";
         BarraMischia.style.animationPlayState = "paused";
+        PersonaggioGiocabile.style.animationPlayState = "paused";
+        PersonaggioGiocabile.classList.remove('Scuoti');
+        DatiDiPosizione.Corri = false;
         PannelloPausa.showModal();
     }
     else
@@ -153,6 +156,7 @@ function PausaRiprendi(DatiDiPosizione,NemicoScelto)
         }
         ArmaInCanna.style.animationPlayState = "running";
         BarraMischia.style.animationPlayState = "running";
+        PersonaggioGiocabile.style.animationPlayState = "running";
         PannelloPausa.close();
     }
 }
@@ -173,7 +177,8 @@ function Fine(Partita,DatiDiPosizione,MirID,Spara,vittoria,NemicoScelto)
         }
         Mirino.style.color = "transparent";
         AttaccoNemico.style.color = "transparent";
-        setTimeout(() => {document.querySelectorAll('.Comandi','.CambioArmi').forEach(B => {B.style.opacity = "0";});},500);
+        setTimeout(() => {document.querySelectorAll('.CambioArmi').forEach(B => {B.style.opacity = "0";});},250);
+        setTimeout(() => {document.querySelectorAll('.Comandi').forEach(B => {B.style.opacity = "0";});},500);
         if(vittoria)
         {   
             document.querySelector('#SchermataPausa').style.color = "green";
@@ -389,7 +394,7 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
                         }
                     }
                 });
-    document.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!DatiDiPosizione.InPausa){if(Spara != undefined){clearInterval(Spara); Spara = undefined;} document.querySelectorAll(".Comandi").forEach(B => {B.style.opacity = "0.5";}); PausaRiprendi(DatiDiPosizione,NemicoScelto)}});
+    document.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!DatiDiPosizione.InPausa){if(Spara != undefined){clearInterval(Spara); Spara = undefined;} document.querySelectorAll(".movimento").forEach(B => {B.style.opacity = "0.5";}); BottoneSpara.style.opacity = "0.5"; PausaRiprendi(DatiDiPosizione,NemicoScelto)}});
     Partita = setInterval(() => {
         if(Math.random() < 0.5 && !DatiDiPosizione.AllAttacco)
         {
