@@ -321,7 +321,7 @@ class Mischia extends Arma
             this.munizioni = 0;
             if(Preso(this,DatiDiPosizione.distanza,NemicoScelto))
             {
-                Dotazione.forEach(A => {A.inventario = A.inventario + 3*A.maxmunizioni;});
+                Rifornisci();
             }
             setTimeout(() => {ArmaInCanna.setAttribute('src',`./Immagini/Armi/${this.nome}.jpg`);},100);
         }
