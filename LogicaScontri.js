@@ -5,6 +5,8 @@ let stavamuovendosi;
 let Spara;
 let Partita;
 let MirID;
+let gap;
+let risparo = true;
 let Boss = document.querySelector('#Nemico');
 let ArmaInCanna = document.querySelector('#Arma');
 let PersonaggioGiocabile = document.querySelector('#PGiocabile');
@@ -227,8 +229,6 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
     Segnaposto1.style.transform = `scale(${10/Math.max(DatiDiPosizione.posG,10)})`;
     Segnaposto2.style.transform = `scale(${10/Math.max(200 - DatiDiPosizione.posG,10)})`;
     let Colpo = false;
-    let gap;
-    let risparo = true;
     AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
     BottoneMischia.addEventListener('touchstart', (event) => {event.stopPropagation(); if(!DatiDiPosizione.InPausa){BottoneMischia.style.opacity = "1"; setTimeout(() => {BottoneMischia.style.opacity = "0.5";},100);
             if(ArmaPresa != MischiaEquipaggiata && !DatiDiPosizione.InCarica)
