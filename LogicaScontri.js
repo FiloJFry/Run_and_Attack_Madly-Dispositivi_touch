@@ -302,7 +302,7 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
             {   
                 risparo = false;
                 let cont = 0;
-                gap = setInterval(() => {if(!DatiDiPosizione.InPausa){cont += 10; if(cont >= ArmaPresa.rateo + 100){risparo = true; clearInterval(gap);}}},10);
+                gap = setInterval(() => {if(!DatiDiPosizione.InPausa){cont += 50; if(cont >= ArmaPresa.rateo + 100){Pulisci(Spara,gap,risparo);}}},50);
             }
         }}
         else
