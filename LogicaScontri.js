@@ -54,10 +54,7 @@ function Pulisci(Spara,gap,risparo)
         clearInterval(gap);
         gap = undefined;
     }
-    if(!risparo)
-    {
-       risparo = true;
-    }
+    risparo = true;
 }
 function Rifornisci()
 {
