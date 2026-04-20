@@ -134,6 +134,7 @@ class Nemico
             DatiDiPosizione.distanzaAG = DatiDiPosizione.distanza;
             AttaccoNemico.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanzaAG,1)})`;
         }
+        AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
         this.AggiornaPosizione(direzione,DatiDiPosizione,spazio);
         }
         else
@@ -239,6 +240,33 @@ class Arma
     {
         return this._Rumori;
     }
+    Fuoco(DatiDiPosizione,NemicoScelto)
+    {
+        ArmaPresa.Spara(DatiDiPosizione,NemicoScelto);
+        Colpo = true;
+        if(ArmaPresa.altorateo)
+        {   
+            Spara = setInterval(() => {ArmaPresa.Spara(DatiDiPosizione,NemicoScelto);},ArmaPresa.rateo + 100);
+        }
+        else if(risparo)
+        {   
+            risparo = false;
+            let cont = 0;
+            gap = setInterval(() => {if(!DatiDiPosizione.InPausa){cont += 100; if(cont >= this.rateo + 100){clearInterval(gap); risparo = true;}}},100);
+        }
+    }
+    Arresta()
+    {
+        Colpo = false;
+        if(ArmaPresa.altorateo)
+        {
+            if(Spara != undefined)
+            {
+                clearInterval(Spara);
+                Spara = undefined;
+            }
+        }
+    }
     Spara(DatiDiPosizione,NemicoScelto)
     {    
         if(this.munizioni > 0)
@@ -321,7 +349,9 @@ class Mischia extends Arma
             this.munizioni = 0;
             if(Preso(this,DatiDiPosizione.distanza,NemicoScelto))
             {
-                Rifornisci();
+                ShotgunEquipaggiato.inventario += 3*ShotgunEquipaggiato.maxmunizioni;
+                AssaltoEquipaggiato.inventario += 3*AssaltoEquipaggiato.maxmunizioni;
+                CecchinoEquipaggiato.inventario += 3*CecchinoEquipaggiato.maxmunizioni;
             }
             setTimeout(() => {ArmaInCanna.setAttribute('src',`./Immagini/Armi/${this.nome}.jpg`);},100);
         }
@@ -408,6 +438,7 @@ class Personaggio
         AttaccoNemico.style.transform = `scale(${10/Math.max(DatiDiPosizione.distanzaAG,1)})`;
         Segnaposto1.style.transform = `scale(${10/Math.max(DatiDiPosizione.posG,10)})`;
         Segnaposto2.style.transform = `scale(${10/Math.max(200 - DatiDiPosizione.posG,10)})`;
+        AggiornaMirino(ArmaPresa,DatiDiPosizione.distanza);
         this.Muovi(verso,DatiDiPosizione);
     }
     else
