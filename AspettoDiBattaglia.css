@@ -1,13 +1,13 @@
 *{
     box-sizing: border-box;
-}
-body{
-    background-color: black;
-    overflow: hidden;
     -webkit-user-select: none; 
     -moz-user-select: none;  
     -ms-user-select: none;  
     user-select: none;
+}
+body{
+    background-color: black;
+    overflow: hidden;
 }
 h4{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
