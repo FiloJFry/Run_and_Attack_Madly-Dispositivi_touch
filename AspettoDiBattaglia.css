@@ -4,6 +4,10 @@
 body{
     background-color: black;
     overflow: hidden;
+    -webkit-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none;  
+    user-select: none;
 }
 h4{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -18,7 +22,7 @@ h4{
     z-index: 2;
 }
 #Frasi{
-    font: italic small-caps 2.4vw;
+    font: italic small-caps 2.4vw cursive;
     color: white;
     position: absolute;
     left: 70vw;
@@ -195,11 +199,7 @@ h4{
     font-size: 7vw;
     display: flex;
     justify-content: center;
-    align-items: center;
-    -webkit-user-select: none; 
-    -moz-user-select: none;  
-    -ms-user-select: none;  
-    user-select: none; 
+    align-items: center; 
     z-index: 3;
 }
 .CambioArmi{
@@ -213,10 +213,6 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-user-select: none; 
-    -moz-user-select: none;  
-    -ms-user-select: none;  
-    user-select: none; 
     z-index: 3;
 }
 .movimento{
