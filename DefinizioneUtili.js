@@ -3,9 +3,9 @@ const DoppiaPistolaDaClown = new Arma("Doppia pistola da clown",13000,6,2,8,2000
 const SpargiSchegge = new Arma("Spargischegge",9140,20,4,16,1500,false,"|***|",["splsh!","fr-ln","fr-ln"]);
 const LanciafiammeTriforcuto = new Arma("Lanciafiamme triforcuto",5500,16,5,20,1,true,"^ ^ ^",["FFFSH","","blblblbl..."]);
 const DistributoreDiPalline = new Arma("Distributore di palline",215,75,45,180,15,true,"I<br/>==O==<br/>I",["Boing!","tk","CRT-CRT-CRT"]);
-const SparaOssa = new Arma("Sparaossa",108,87,80,320,45,true,"I<br/>--X--<br/>I",["tln","tsh!","frrlll!"]);
+const SparaOssa = new Arma("Sparaossa",108,87,80,320,55,true,"I<br/>--X--<br/>I",["tln","tsh!","frrlll!"]);
 const FriggitriceDAssalto = new Arma("Friggitrice da assalto",325,64,50,200,30,true,"I<br/>~~(#)~~<br/>I",["tsn","ffssh","zzz"]);
-const LanciaMiniRazzi = new Arma("Lanciaminirazzi",420,106,16,64,65,true,"‼<br/>≡≡Ø≡≡<br/>‼",["vsh!","c-clck","c-clck"]);
+const LanciaMiniRazzi = new Arma("Lanciaminirazzi",420,106,16,64,100,true,"‼<br/>≡≡Ø≡≡<br/>‼",["vsh!","c-clck","c-clck"]);
 const GeneratoreDaBattaglia = new Arma("Generatore da battaglia",2050,145,8,32,1200,false,"/ <br/>-·-<br/> /",["BZ","bng","clk-c-clk"]);
 const LanciaGranateDiPrecisione = new Arma("Lanciagranate di precisione",3840,128,5,20,1800,false,"|<br/>= ᴓ =<br/>|",["fln-BOOM","k-cluk","k-cluk"]);
 const ManoAPistola = new Arma("Mano a pistola",1350,168,10,40,500,false,"ɵ",["Pium!","mmmh...","gnam!"]);
