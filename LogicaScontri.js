@@ -165,6 +165,8 @@ function Fine(Partita,vittoria,NemicoScelto)
 {
         clearInterval(Partita);
         InPausa = true;
+        PersonaggioGiocabile.classList.remove('Scuoti','Schivata');
+        ArmaInCanna.classList.remove('TornaSu','VaiGiù');
         PiuInfo.style.color = "transparent";
         BarraMischia.style.backgroundColor = "transparent";
         document.querySelector('#PienBarraMischia').style.backgroundColor = "transparent";
