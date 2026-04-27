@@ -280,9 +280,9 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
                     Corri = true;
                     Protagonista.Muovi(false);
 }}});
-    BottoneMuoviSu.addEventListener('touchend',(event) => {event.stopPropagation(); BottoneMuoviSu.style.opacity = "0.5"; Corri = false;});
-    BottoneMuoviGiù.addEventListener('touchend',(event) => {event.stopPropagation(); BottoneMuoviGiù.style.opacity = "0.5"; Corri = false;});
-    BottoneSpara.addEventListener('touchend',(event) => {event.stopPropagation(); BottoneSpara.style.opacity = "0.5"; ArmaPresa.Arresta()});
+    BottoneMuoviSu.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneMuoviSu.style.opacity = "0.5"; Corri = false;}});
+    BottoneMuoviGiù.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneMuoviGiù.style.opacity = "0.5"; Corri = false;}});
+    BottoneSpara.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneSpara.style.opacity = "0.5"; ArmaPresa.Arresta()}});
     document.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){if(Spara != undefined){clearInterval(Spara); Spara = undefined;} document.querySelectorAll(".movimento , #Spara").forEach(B => {B.style.opacity = "0.5";}); PausaRiprendi(NemicoScelto)}});
     Partita = setInterval(() => {
         if(Math.random()*Math.max(30,Math.min(distanza,60))/40 - Math.sqrt(Protagonista.vita)/(Math.trunc(Math.sqrt(Protagonista.vita))*10) < 0.5 && !AllAttacco)
