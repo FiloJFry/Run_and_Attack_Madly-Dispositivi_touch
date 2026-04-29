@@ -258,3 +258,11 @@ h4{
     right: 7.5vw;
     bottom: 5vh;
 }
+.Filtro{
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+.MezzoFiltro{
+    filter: grayscale(50%);
+    -webkit-filter: grayscale(50%);
+}

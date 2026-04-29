@@ -1,29 +1,67 @@
 let MostraSuoni = true;
+let filtro = window.localStorage.getItem("Filtro");
 let PannelloOpzioni = document.querySelector('#Opzioni');
 let BottoneSalva = document.querySelector('#Salva');
 let BottoneSuoni = document.querySelector('#MostraISuoni');
 let PannelloTutorial = document.querySelector('#Tutorial');
-function AggiornaTasti()
-{   
-    if(window.localStorage.getItem('MostraSuoni') != null)
+let FiltroColore = document.querySelector("#filtroColore");
+function AlternaSiONo(bottone,sì)
+{
+    if(sì)
     {
-        BottoneSuoni.style.backgroundColor = 'red';
-        BottoneSuoni.textContent = 'x';
+        bottone.style.backgroundColor = "green";
+        bottone.textContent = "√";
     }
     else
     {
-        BottoneSuoni.style.backgroundColor = 'green';
-        BottoneSuoni.textContent = '√';
+        bottone.style.backgroundColor = "red";
+        bottone.textContent = "x";
     }
 }
-function Salva()
-{     
-    window.location.reload();
+function Filtra(filtro)
+{   
+    if(FiltroColore != null)
+    {
+    if(filtro != null)
+    {   
+        FiltroColore.innerHTML = `*{filter: grayscale(${100/filtro}%); -webkit-filter: grayscale(${100/filtro}%);}`;
+    }
+    else
+    {
+        FiltroColore.innerHTML = `*{filter: none; -webkit-filter: none;}`;
+    }
+    }
+    else
+    {
+    if(filtro == 1)
+    {
+        Elementi.forEach(E => {E.classList.remove("MezzoFiltro"); E.classList.add("Filtro");});
+    }
+    else if(filtro == 2)
+    {
+        Elementi.forEach(E => {E.classList.remove("Filtro"); E.classList.add("MezzoFiltro");});
+    }
+    else
+    {
+        Elementi.forEach(E => {E.classList.remove("Filtro"); E.classList.remove("MezzoFiltro");});
+    }
+    }
 }
-function Reset()
+function AggiornaBottoniImpostazioni()
 {
-    window.localStorage.removeItem("MostraSuoni");
-    window.location.reload();
+    AlternaSiONo(BottonePosizioni,MostraPosizioni);
+    AlternaSiONo(BottoneSuoni,MostraSuoni);
+    if(window.localStorage.getItem("Filtro") != null)
+    {
+        if(window.localStorage.getItem("Filtro") == 1)
+        {
+            BottoneFiltro.textContent = "Bianco e nero";
+        }
+        else
+        {
+            BottoneFiltro.textContent = "Una via di mezzo...";
+        }
+    }
 }
 function AggiornaImpostazioni()
 {   
@@ -35,16 +73,47 @@ function AggiornaImpostazioni()
     {
         RumoriArma.style.color = "white";
     }
-    AggiornaTasti();
+    AggiornaBottoniImpostazioni();
 }
-function SalvaOra()
+function Salva()
 {   
-    AggiornaImpostazioni();
-    PannelloOpzioni.close();
+        if(!MostraSuoni)
+        {
+            window.localStorage.setItem("MostraSuoni",MostraSuoni);
+        }
+        else
+        {
+            window.localStorage.removeItem("MostraSuoni");
+        }
+        if(filtro != null)
+        {
+            window.localStorage.setItem("Filtro",filtro);
+        }
+        else
+        {
+            window.localStorage.removeItem("Filtro");
+        }
+        if(window.location.href == "CampoDiBattaglia.html")
+        {
+            AggiornaImpostazioni();
+        }
+        else
+        {
+            AggiornaBottoniImpostazioni();
+        }
+        PannelloOpzioni.close();
 }
-function ResetOra()
+function Reset()
 {
     window.localStorage.removeItem("MostraSuoni");
-    AggiornaImpostazioni();
+    window.localStorage.removeItem("Filtro");
+    if(window.location.href == "CampoDiBattaglia.html")
+    {
+        AggiornaImpostazioni();
+    }
+    else
+    {
+        AggiornaBottoniImpostazioni();
+    }
     PannelloOpzioni.close();
 }

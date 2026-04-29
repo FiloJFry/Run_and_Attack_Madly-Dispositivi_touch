@@ -42,6 +42,7 @@ let BottoneMischia = document.querySelector("#Mischia");
 let BottoneShotgun = document.querySelector("#Shotgun");
 let BottoneAssalto = document.querySelector("#Assalto");
 let BottoneCecchino = document.querySelector("#Cecchino");
+let Elementi = [Boss,ArmaInCanna,Mirino,PiuInfo,AttaccoNemico,BarraVita,hp,BarraMischia,Segnaposto1,Segnaposto2,RumoriArma,FrasiNemico,PannelloConferma,PannelloPausa,PannelloOpzioni,BottoneMischia,BottoneShotgun,BottoneCecchino,BottoneAssalto,BottoneRicarica,BottoneSchiva,BottoneSpara,BottoneMuoviSu,BottoneMuoviGiù];
 function AggiornaMirino(ArmaEquipaggiata,distanza)
 {
     if(ArmaEquipaggiata.portata >= distanza && Mirino.style.color != "red")
@@ -177,10 +178,10 @@ function Fine(Partita,vittoria,NemicoScelto)
         if(vittoria)
         {   
             document.querySelector('#SchermataPausa').style.color = "green";
-            document.querySelector('#SchermataPausa').innerHTML = `VITTORIA! <button type = "button" id = "Riprendi" onclick = "event.stopPropagation(); PausaRiprendi(NemicoScelto);" style = "opacity: 0.5" disabled>Riprendi</button>
-            <button type = "button" id = "Riprova" onclick = "if(!RimaniQui){RimaniQui = true;} PannelloConferma.showModal()">Riprova</button>
-            <button type="button" id = "BottoneOpzioni" onclick ="PannelloOpzioni.showModal();">Opzioni</button>
-            <button type = "button" id = "Abbandona" onclick = "if(RimaniQui){RimaniQui = false;} PannelloConferma.showModal()">Gioca ancora</button>`;
+            document.querySelector('#SchermataPausa').innerHTML = `VITTORIA! <button type = "button" id = "Riprendi" ontouchstart = "event.stopPropagation(); PausaRiprendi(NemicoScelto);" style = "opacity: 0.5" disabled>Riprendi</button>
+            <button type = "button" id = "Riprova" ontouchstart = "if(!RimaniQui){RimaniQui = true;} PannelloConferma.showModal()">Riprova</button>
+            <button type="button" id = "BottoneOpzioni" ontouchstart="PannelloOpzioni.showModal();">Opzioni</button>
+            <button type = "button" id = "Abbandona" ontouchstart = "if(RimaniQui){RimaniQui = false;} PannelloConferma.showModal()">Gioca ancora</button>`;
             Boss.style.transform = `scale(1)`;
             Boss.src = `./Immagini/Animazioni/Animazione Vittoria ${NemicoScelto.nome}_1.jpg`;
             setTimeout(() =>{FrasiNemico.textContent = `${NemicoScelto.Frasi[2]}`; ArmaInCanna.src = `./Immagini/Animazioni/Animazione Vittoria contro ${NemicoScelto.nome}_1.jpg`;},500);
@@ -193,10 +194,10 @@ function Fine(Partita,vittoria,NemicoScelto)
         else
         {   
             document.querySelector('#SchermataPausa').style.color = "red";
-            document.querySelector('#SchermataPausa').innerHTML = `Game Over <button type = "button" id = "Riprendi" onclick = "event.stopPropagation(); PausaRiprendi(NemicoScelto);" style = "opacity: 0.5" disabled>Riprendi</button>
-            <button type = "button" id = "Riprova" onclick = "if(!RimaniQui){RimaniQui = true;} PannelloConferma.showModal()">Riprova</button>
-            <button type="button" id = "BottoneOpzioni" onclick ="PannelloOpzioni.showModal();">Opzioni</button>
-            <button type = "button" id = "Abbandona" onclick = "if(RimaniQui){RimaniQui = false;} PannelloConferma.showModal()">Gioca ancora</button>`;
+            document.querySelector('#SchermataPausa').innerHTML = `Game Over <button type = "button" id = "Riprendi" ontouchstart = "event.stopPropagation(); PausaRiprendi(NemicoScelto);" style = "opacity: 0.5" disabled>Riprendi</button>
+            <button type = "button" id = "Riprova" ontouchstart = "if(!RimaniQui){RimaniQui = true;} PannelloConferma.showModal()">Riprova</button>
+            <button type="button" id = "BottoneOpzioni" ontouchstart="PannelloOpzioni.showModal();">Opzioni</button>
+            <button type = "button" id = "Abbandona" ontouchstart = "if(RimaniQui){RimaniQui = false;} PannelloConferma.showModal()">Gioca ancora</button>`;
             ArmaInCanna.classList.add('VaiGiù');
             setTimeout(() =>{FrasiNemico.textContent = `${NemicoScelto.Frasi[1]}`},500);
             setTimeout(() => {ArmaInCanna.classList.remove('VaiGiù'); ArmaInCanna.classList.add('TornaSu'); ArmaInCanna.src = "./Immagini/Animazioni/Animazione Sconfitta.jpg"},500);
@@ -204,7 +205,7 @@ function Fine(Partita,vittoria,NemicoScelto)
         }
         setTimeout(() => {PannelloPausa.showModal();},3000);
 }
-function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEquipaggiato,MischiaEquipaggiata,NemicoScelto)
+function Gioco()
 {   
     ArmaPresa = AssaltoEquipaggiato;
     Boss.setAttribute('src',`./Immagini/Nemici/${NemicoScelto.nome}.jpg`);
@@ -284,7 +285,7 @@ function Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEqui
 }}});
     BottoneMuoviSu.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneMuoviSu.style.opacity = "0.5"; Corri = false;}});
     BottoneMuoviGiù.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneMuoviGiù.style.opacity = "0.5"; Corri = false;}});
-    BottoneSpara.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneSpara.style.opacity = "0.5"; ArmaPresa.Arresta()}});
+    BottoneSpara.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneSpara.style.opacity = "0.5"; ArmaPresa.Arresta();}});
     document.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){if(Spara != undefined){clearInterval(Spara); Spara = undefined;} document.querySelectorAll(".movimento , #Spara").forEach(B => {B.style.opacity = "0.5";}); PausaRiprendi(NemicoScelto)}});
     Partita = setInterval(() => {
         if(Math.random()*Math.max(30,Math.min(distanza,60))/40 - Math.sqrt(Protagonista.vita)/(Math.trunc(Math.sqrt(Protagonista.vita))*10) < 0.5 && !AllAttacco)
@@ -304,5 +305,6 @@ function VaiVaiVai()
     Mischie.forEach(M => {if(sessionStorage.getItem("MischiaEquipaggiata") == M.nome){MischiaEquipaggiata = M;}})
     difficoltà = Number(sessionStorage.getItem("Difficoltà"));
     AggiornaImpostazioni();
-    Gioco(Protagonista,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEquipaggiato,MischiaEquipaggiata,NemicoScelto);
+    Filtra(filtro);
+    Gioco();
 }

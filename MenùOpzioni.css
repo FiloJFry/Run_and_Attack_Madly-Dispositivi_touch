@@ -19,8 +19,7 @@ button{
     text-align: center;
     margin: 2vw;
 }
-#MostraISuoni{
-    background-color: green;
+.SiONo{
     border: solid white;
     color: white;
     width: 3vw;

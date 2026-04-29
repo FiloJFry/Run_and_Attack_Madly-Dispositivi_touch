@@ -54,11 +54,13 @@
         <dialog id="Opzioni">
         <div id="SchermataOpzioni">
                 <b>Rumori delle armi</b>
-                <div class = "Riga"><button type = "button" id = "MostraISuoni"  onclick = "if(!MostraSuoni){MostraSuoni = true;window.localStorage.removeItem('MostraSuoni');BottoneSuoni.style.backgroundColor = 'green';BottoneSuoni.textContent = '√';}
-                else{MostraSuoni = false;window.localStorage.setItem('MostraSuoni',`${MostraSuoni}`);BottoneSuoni.style.backgroundColor = 'red';BottoneSuoni.textContent = 'x';}">√</button></div>
+               <div class = "Riga"><button type = "button" id = "MostraISuoni" class = "SiONo"  onclick = "if(!MostraSuoni){MostraSuoni = true;} else{MostraSuoni = false;} AlternaSiONo(BottoneSuoni,MostraSuoni);"></button></div>
+                <b>Colori</b>
+                <div class = "Riga"><button type = "button" id = "Filtro" onclick = "if(filtro == null){filtro = 1; BottoneFiltro.textContent = 'Bianco e nero';} 
+                else if(filtro == 1){filtro ++; BottoneFiltro.textContent = 'Una via di mezzo...';} else if(filtro == 2){filtro = null; BottoneFiltro.textContent = 'Predefinito';} Filtra(filtro);">Predefinito</button></div>
                 <div class = MiniCentratore>
-                <button type="button" id="Salva" onclick="SalvaOra()">Salva</button>
-                <button type="button" id="Reset" onclick="ResetOra()">Ripristina predefiniti</button>
+                <button type="button" id="Salva" onclick="Salva()">Salva</button>
+                <button type="button" id="Reset" onclick="Reset()">Ripristina predefiniti</button>
             </div>
             </div>
         </dialog>

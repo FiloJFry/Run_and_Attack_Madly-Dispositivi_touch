@@ -6,8 +6,9 @@
         <title>Run and Attack Madly</title>
         <link rel = "stylesheet" href = "./Aspetto.css">
         <link rel="stylesheet" href="Animazioni.css">
+        <style id = "filtroColore"></style>
     </head>
-    <body onload = "Nemici.forEach(N => {ColoraNemico(N.nome)});">
+    <body onload = "Nemici.forEach(N => {ColoraNemico(N.nome)}); if(window.localStorage.getItem('Filtro') != null){document.querySelector('#filtroColore').innerHTML = `*{filter: grayscale(${100/window.localStorage.getItem('Filtro')}%); -webkit-filter: grayscale(${100/window.localStorage.getItem('Filtro')}%);}`;}">
         <h2>Chi vuoi affrontare?</h2>
         <div class = "contscelte">
             <div><button class = "BoxScelta N" id = "Metalskeletoncowboy" type="button" onclick = "ScegliNemico('.N','Metal skeleton cowboy')"><img class = "Anteprima" src = "./Immagini/Anteprime/Metal skeleton cowboy_anteprima.jpg" alt = "Scelta"/>Metal skeleton cowboy<br/><br/>Se stai leggendo la descrizione per capire chi sia e da dove venga questo tizio,ti dico sin da subito che non troverai granché</button></div>
