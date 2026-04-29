@@ -1,4 +1,4 @@
-let MostraSuoni = true;
+let MostraSuoni = window.localStorage.getItem("MostraSuoni") == null;
 let filtro = window.localStorage.getItem("Filtro");
 let PannelloOpzioni = document.querySelector('#Opzioni');
 let BottoneSalva = document.querySelector('#Salva');
@@ -59,7 +59,7 @@ function AggiornaBottoniImpostazioni()
         }
         else
         {
-            BottoneFiltro.textContent = "Una via di mezzo...";
+            BottoneFiltro.textContent = "Flashback";
         }
     }
 }
@@ -93,7 +93,7 @@ function Salva()
         {
             window.localStorage.removeItem("Filtro");
         }
-        if(window.location.href == "CampoDiBattaglia.html")
+        if(FiltroColore == null)
         {
             AggiornaImpostazioni();
         }
@@ -107,7 +107,7 @@ function Reset()
 {
     window.localStorage.removeItem("MostraSuoni");
     window.localStorage.removeItem("Filtro");
-    if(window.location.href == "CampoDiBattaglia.html")
+    if(FiltroColore == null)
     {
         AggiornaImpostazioni();
     }
