@@ -6,8 +6,9 @@
     <title>Run and Attack Madly</title>
     <link rel = "stylesheet" type="text/css" href = "AspettoBottoni.css" />
     <link rel = "stylesheet" type="text/css" href = "MenùOpzioni.css" />
+    <style id = "filtroColore"></style>
 </head>
-<body onload = "AggiornaTasti();">
+<body onload = "AggiornaBottoniImpostazioni(); Filtra(filtro);">
     <div id="Centratore">
         <button type="button" id="Gioca" onclick="window.location.href = './FoglioDiScelte.html';">Gioca</button>
         <button type="button" id="RapidoTutorial" onclick="PannelloTutorial.showModal();">Rapido

@@ -28,6 +28,16 @@ button{
     align-items: center;
     justify-content: center;
 }
+#Filtro{
+    background-color: black;
+    border: solid white;
+    color: white;
+    height: 6vw;
+    width: 18vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .MiniCentratore{
     display: flex;
     flex-direction: row;

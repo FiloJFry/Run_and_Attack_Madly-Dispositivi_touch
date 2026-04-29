@@ -3,6 +3,7 @@ let filtro = window.localStorage.getItem("Filtro");
 let PannelloOpzioni = document.querySelector('#Opzioni');
 let BottoneSalva = document.querySelector('#Salva');
 let BottoneSuoni = document.querySelector('#MostraISuoni');
+let BottoneFiltro = document.querySelector('#Filtro');
 let PannelloTutorial = document.querySelector('#Tutorial');
 let FiltroColore = document.querySelector("#filtroColore");
 function AlternaSiONo(bottone,sì)
@@ -49,7 +50,6 @@ function Filtra(filtro)
 }
 function AggiornaBottoniImpostazioni()
 {
-    AlternaSiONo(BottonePosizioni,MostraPosizioni);
     AlternaSiONo(BottoneSuoni,MostraSuoni);
     if(window.localStorage.getItem("Filtro") != null)
     {
