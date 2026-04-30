@@ -1,11 +1,11 @@
 class Nemico
 {
-    constructor(nome,velocità,vita,attacco,coloreAttacco,Frasi)
+    constructor(nome,attacco,coloreAttacco,Frasi)
     {
         this._nome = nome;
-        this._velocità = velocità;
-        this._vita = vita;
-        this._maxvita = vita;
+        this._velocità = 0;
+        this._vita = 0;
+        this._maxvita = 0;
         this._attacco = attacco;
         this._coloreAttacco = coloreAttacco;
         this._Frasi = Frasi
@@ -155,14 +155,14 @@ class Nemico
 }
 class Arma
 {   
-    constructor(nome,danni,portata,munizioni,inventario,rateo,altorateo,mirino,Rumori)
+    constructor(nome,danni,portata,munizioni,rateo,altorateo,mirino,Rumori)
     {
         this._nome = nome;
         this._danni = danni;
         this._portata = portata;
         this._munizioni = munizioni;
         this._maxmunizioni = munizioni;
-        this._inventario = inventario;
+        this._inventario = 4*munizioni;
         this._rateo = rateo;
         this._altorateo = altorateo;
         this._mirino = mirino;
@@ -349,6 +349,11 @@ class Arma
 }
 class Mischia extends Arma
 {   
+    constructor(nome,danni,portata,munizioni,rateo,altorateo,mirino,Rumori)
+    {
+        super(nome,danni,portata,munizioni,rateo,altorateo,mirino,Rumori);
+        this._inventario = 0;
+    }
     Spara(NemicoScelto)
     {
         if(this.munizioni == 1)
@@ -375,7 +380,10 @@ class Mischia extends Arma
         BarraMischia.classList.add('BarraInCarica');
         BarraMischia.addEventListener('animationend',() => {this.munizioni = 1; BarraMischia.classList.remove('BarraInCarica');},{once: true,});
     }
-
+    Step()
+    {
+        return;
+    }
 }
 class Personaggio
 {   
