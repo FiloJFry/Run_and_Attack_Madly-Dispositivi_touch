@@ -17,6 +17,7 @@ let Partita;
 let Colpo = false;
 let gap;
 let risparo = true;
+let Giocando = false;
 let ArmaPresa;
 let Boss = document.querySelector('#Nemico');
 let ArmaInCanna = document.querySelector('#Arma');
@@ -163,9 +164,10 @@ function PausaRiprendi(NemicoScelto)
     }
 }
 function Fine(Partita,vittoria,NemicoScelto)
-{
-        clearInterval(Partita);
+{       
+        Giocando = false;
         InPausa = true;
+        clearInterval(Partita);
         PersonaggioGiocabile.classList.remove('Scuoti','Schivata');
         ArmaInCanna.classList.remove('TornaSu','VaiGiù');
         PiuInfo.style.color = "transparent";
@@ -189,7 +191,7 @@ function Fine(Partita,vittoria,NemicoScelto)
             {
                 window.localStorage.setItem(`${NemicoScelto.nome}`,`${difficoltà}`);
             }
-            setTimeout(() => {ArmaInCanna.src = `./Immagini/Animazioni/Animazione Vittoria contro ${NemicoScelto.nome}_2.jpg`; Boss.src = `./Immagini/Animazioni/Animazione Vittoria ${NemicoScelto.nome}_2.jpg`;},1500);
+            setTimeout(() => {ArmaInCanna.src = `./Immagini/Animazioni/Animazione Vittoria contro ${NemicoScelto.nome}_2.jpg`; Boss.src = `./Immagini/Animazioni/Animazione Vittoria ${NemicoScelto.nome}_2.jpg`; RumoriArma.textContent = "";},1500);
         }
         else
         {   
@@ -200,13 +202,14 @@ function Fine(Partita,vittoria,NemicoScelto)
             <button type = "button" id = "Abbandona" onclick = "if(RimaniQui){RimaniQui = false;} PannelloConferma.showModal()">Gioca ancora</button>`;
             ArmaInCanna.classList.add('VaiGiù');
             setTimeout(() =>{FrasiNemico.textContent = `${NemicoScelto.Frasi[1]}`},500);
-            setTimeout(() => {ArmaInCanna.classList.remove('VaiGiù'); ArmaInCanna.classList.add('TornaSu'); ArmaInCanna.src = "./Immagini/Animazioni/Animazione Sconfitta.jpg"},500);
-            setTimeout(() => {ArmaInCanna.classList.remove('TornaSu')},1000);
+            setTimeout(() => {ArmaInCanna.classList.remove('VaiGiù'); ArmaInCanna.classList.add('TornaSu'); ArmaInCanna.src = "./Immagini/Animazioni/Animazione Sconfitta.jpg";},500);
+            setTimeout(() => {ArmaInCanna.classList.remove('TornaSu'); RumoriArma.textContent = "";},1000);
         }
         setTimeout(() => {PannelloPausa.showModal();},3000);
 }
 function Gioco()
 {   
+    Giocando = true;
     ArmaPresa = AssaltoEquipaggiato;
     Boss.setAttribute('src',`./Immagini/Nemici/${NemicoScelto.nome}.jpg`);
     ArmaInCanna.setAttribute('src',`./Immagini/Armi/${ArmaPresa.nome}.jpg`);

@@ -306,7 +306,9 @@ class Arma
         }
     }
     Step(a,p)
-    {
+    {   
+        if(Giocando)
+        {
         ArmaInCanna.classList.add('VaiGiù');
         ArmaInCanna.addEventListener('animationend',(event) => {if(event.animationName == "vaiGiù"){
         ArmaInCanna.classList.remove('VaiGiù'); 
@@ -346,6 +348,7 @@ class Arma
         }},{once: true,});
         }},{once: true,});
     }
+}
 }
 class Mischia extends Arma
 {   
