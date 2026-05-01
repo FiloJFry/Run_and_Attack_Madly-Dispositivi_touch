@@ -69,11 +69,11 @@ function AggiornaBottoniImpostazioni()
 }
 function AggiornaImpostazioni()
 {   
-    if(window.localStorage.getItem("MostraSuoni") != null)
+    if(window.localStorage.getItem("MostraSuoni") != null && Giocando)
     {
         RumoriArma.style.color = "transparent";
     }
-    else
+    else if(Giocando)
     {
         RumoriArma.style.color = "white";
     }
