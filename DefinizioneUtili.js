@@ -1,6 +1,6 @@
 const Quadrupletta = new Arma("Quadrupletta",24000,10,1,3000,false,"[####]",["BAM", "KSH", "CRRLCK"]);
 const DoppiaPistolaDaClown = new Arma("Doppia pistola da clown",13000,6,2,300,false,"@ @",["Scherzetto!", "crrt", "f-flump"]);
-const SpargiSchegge = new Arma("Spargischegge",9140,20,4,1500,false,"|***|",["splsh!", "fr-ln", "fr-ln"]);
+const SpargiSchegge = new Arma("Spargischegge",9960,20,4,1400,false,"|***|",["splsh!", "fr-ln", "fr-ln"]);
 const LanciafiammeTriforcuto = new Arma("Lanciafiamme triforcuto",4000,16,5,1,true,"^ ^ ^",["FFFSH", "", "blblblbl..."]);
 const DistributoreDiPalline = new Arma("Distributore di palline",196,75,45,15,true,"I<br/>==O==<br/>I",["Boing!", "tk", "CRT-CRT-CRT"]);
 const SparaOssa = new Arma("Sparaossa",90,84,80,75,true,"I<br/>--X--<br/>I",["tln", "tsh!", "frrlll!"]);
