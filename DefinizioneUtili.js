@@ -8,7 +8,7 @@ const FriggitriceDAssalto = new Arma("Friggitrice da assalto",324,64,30,56,true,
 const LanciaMiniRazzi = new Arma("Lanciaminirazzi",384,92,16,120,true,"‼<br/>≡≡Ø≡≡<br/>‼",["vsh!", "c-clck", "c-clck"]);
 const GeneratoreDaBattaglia = new Arma("Generatore da battaglia",2050,145,8,1200,false,"/ <br/>-·-<br/> /",["BZ", "bng", "clk-c-clk"]);
 const LanciaGranateDiPrecisione = new Arma("Lanciagranate di precisione",3840,128,5,1600,false,"|<br/>= ᴓ =<br/>|",["fln-BOOM", "k-cluk", "k-cluk"]);
-const ManoAPistola = new Arma("Mano a pistola",1350,168,10,500,false,"ɵ",["Pium!", "mmmh...", "gnam!"]);
+const ManoAPistola = new Arma("Mano a pistola",800,168,10,500,false,"ɵ",["Pium!", "mmmh...", "gnam!"]);
 const CannoneDiCarroArmato = new Arma("Cannone di carro armato",11800,152,1,2500,false,"||<br/>≡≡O≡≡<br/>||",["POM", "B-DSH", "C-DSH"]);
 const SchiaffoTermico = new Mischia("Schiaffo termico",15000,5,1,45000,false,"▒▒",["BISHZ!"]);
 const GelatoSciolto = new Mischia("Gelato sciolto",12000,6,1,45000,false,"##",["splch!"]);
