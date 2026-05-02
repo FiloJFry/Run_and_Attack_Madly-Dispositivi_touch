@@ -17,7 +17,7 @@ let Partita;
 let Colpo = false;
 let gap;
 let risparo = true;
-let Giocando = false;
+let Giocando = true;
 let ArmaPresa;
 let Boss = document.querySelector('#Nemico');
 let ArmaInCanna = document.querySelector('#Arma');
@@ -209,7 +209,6 @@ function Fine(Partita,vittoria,NemicoScelto)
 }
 function Gioco()
 {   
-    Giocando = true;
     ArmaPresa = AssaltoEquipaggiato;
     Boss.setAttribute('src',`./Immagini/Nemici/${NemicoScelto.nome}.jpg`);
     ArmaInCanna.setAttribute('src',`./Immagini/Armi/${ArmaPresa.nome}.jpg`);
