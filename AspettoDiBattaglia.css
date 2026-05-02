@@ -205,7 +205,6 @@ h4{
 .CambioArmi{
     width: 7vw;
     height: 7vw;
-    color: black;
     opacity: 0.5;
     border-radius: 0.5vw;
     position: absolute;
@@ -214,6 +213,11 @@ h4{
     justify-content: center;
     align-items: center;
     z-index: 3;
+}
+.MiniArma{
+    object-fit: contain;
+    width: 6.25vw;
+    height: 6.25vw;
 }
 .movimento{
     background-color:aqua;

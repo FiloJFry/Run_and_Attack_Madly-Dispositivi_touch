@@ -304,7 +304,11 @@ function VaiVaiVai()
 {
     Nemici.forEach(N => {if(sessionStorage.getItem("Nemico scelto") == N.nome){NemicoScelto = N;}});
     Armi.forEach(A => {if(sessionStorage.getItem("ShotgunEquipaggiato") == A.nome){ShotgunEquipaggiato = A;} else if (sessionStorage.getItem("AssaltoEquipaggiato") == A.nome){AssaltoEquipaggiato = A;} else if (sessionStorage.getItem("CecchinoEquipaggiato") == A.nome){CecchinoEquipaggiato = A;}});
-    Mischie.forEach(M => {if(sessionStorage.getItem("MischiaEquipaggiata") == M.nome){MischiaEquipaggiata = M;}})
+    Mischie.forEach(M => {if(sessionStorage.getItem("MischiaEquipaggiata") == M.nome){MischiaEquipaggiata = M;}});
+    BottoneMischia.querySelector('img').src = `Immagini/Anteprime/${MischiaEquipaggiata.nome}_anteprima.jpg`;
+    BottoneShotgun.querySelector('img').src = `Immagini/Anteprime/${ShotgunEquipaggiato.nome}_anteprima.jpg`;
+    BottoneAssalto.querySelector('img').src = `Immagini/Anteprime/${AssaltoEquipaggiato.nome}_anteprima.jpg`;
+    BottoneCecchino.querySelector('img').src = `Immagini/Anteprime/${CecchinoEquipaggiato.nome}_anteprima.jpg`;
     difficoltà = Number(sessionStorage.getItem("Difficoltà"));
     AggiornaImpostazioni();
     Filtra(filtro);
