@@ -46,11 +46,11 @@ let BottoneCecchino = document.querySelector("#Cecchino");
 let Elementi = [Boss,ArmaInCanna,Mirino,PiuInfo,AttaccoNemico,BarraVita,hp,BarraMischia,Segnaposto1,Segnaposto2,RumoriArma,FrasiNemico,PannelloConferma,PannelloPausa,PannelloOpzioni,BottoneMischia,BottoneShotgun,BottoneCecchino,BottoneAssalto,BottoneRicarica,BottoneSchiva,BottoneSpara,BottoneMuoviSu,BottoneMuoviGiù];
 function AggiornaMirino(ArmaEquipaggiata,distanza)
 {
-    if(ArmaEquipaggiata.portata >= distanza && Mirino.style.color != "red")
+    if(ArmaEquipaggiata.portata >= distanza && Mirino.style.color != "red" && Giocando)
     {
         Mirino.style.color = 'red';
     }
-    else if(ArmaEquipaggiata.portata < distanza && Mirino.style.color != "white")
+    else if(ArmaEquipaggiata.portata < distanza && Mirino.style.color != "white" && Giocando)
     {
         Mirino.style.color = 'white';
     }
