@@ -57,16 +57,6 @@ function ScaricaImmagini(m,s,a,c,n)
     new Image().src = `./Immagini/Nemici/${n}.jpg`;
     new Image().src = `./Immagini/Nemici/${n}_attaccando.jpg`;
 }
-function Riprova()
-{
-    posG = 0;
-    posA = 100;
-    distanza = 100;
-    distanzaAG = 100;
-    Giocando = true;
-    risparo = true;
-    VaiVaiVai();
-}
 function AggiornaMirino(ArmaEquipaggiata,distanza)
 {
     if(ArmaEquipaggiata.portata >= distanza && Mirino.style.color != "red" && Giocando)
@@ -325,8 +315,6 @@ function Gioco()
 }
 function VaiVaiVai()
 {   
-    if(!RimaniQui)
-    {
     Nemici.forEach(N => {if(sessionStorage.getItem("Nemico scelto") == N.nome){NemicoScelto = N;}});
     Armi.forEach(A => {if(sessionStorage.getItem("ShotgunEquipaggiato") == A.nome){ShotgunEquipaggiato = A;} else if (sessionStorage.getItem("AssaltoEquipaggiato") == A.nome){AssaltoEquipaggiato = A;} else if (sessionStorage.getItem("CecchinoEquipaggiato") == A.nome){CecchinoEquipaggiato = A;}});
     Mischie.forEach(M => {if(sessionStorage.getItem("MischiaEquipaggiata") == M.nome){MischiaEquipaggiata = M;}});
@@ -338,10 +326,5 @@ function VaiVaiVai()
     ScaricaImmagini(MischiaEquipaggiata.nome,ShotgunEquipaggiato.nome,AssaltoEquipaggiato.nome,CecchinoEquipaggiato.nome,NemicoScelto.nome);
     AggiornaImpostazioni();
     Filtra(filtro);
-    }
-    else
-    {
-        PannelloConferma.close();
-    }
     Gioco();
 }
