@@ -343,6 +343,7 @@ function VaiVaiVai()
     else
     {
         PannelloConferma.close();
+        PannelloPausa.close();
     }
     Gioco();
 }
