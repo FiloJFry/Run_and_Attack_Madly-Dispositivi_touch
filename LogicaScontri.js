@@ -310,6 +310,10 @@ function VaiVaiVai()
     BottoneAssalto.querySelector('img').src = `Immagini/Anteprime/${AssaltoEquipaggiato.nome}_anteprima.jpg`;
     BottoneCecchino.querySelector('img').src = `Immagini/Anteprime/${CecchinoEquipaggiato.nome}_anteprima.jpg`;
     difficoltà = Number(sessionStorage.getItem("Difficoltà"));
+    new Image().src = `./Immagini/Armi/${MischiaEquipaggiata.nome}_attaccando.jpg`;
+    new Image().src = `./Immagini/Armi/${ShotgunEquipaggiato.nome}_attaccando.jpg`;
+    new Image().src = `./Immagini/Armi/${AssaltoEquipaggiato.nome}_attaccando.jpg`;
+    new Image().src = `./Immagini/Armi/${CecchinoEquipaggiato.nome}_attaccando.jpg`;
     AggiornaImpostazioni();
     Filtra(filtro);
     Gioco();
