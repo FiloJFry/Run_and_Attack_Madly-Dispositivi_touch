@@ -9,7 +9,7 @@ let InMoto = false;
 let AllAttacco = false;
 let InPausa = false;
 let InCarica = false;
-let RimaniQui = true;
+let RimaniQui = false;
 let stavaattaccando;
 let stavamuovendosi;
 let Spara;
@@ -301,7 +301,9 @@ function Gioco()
     },4000/difficoltà);
 }
 function VaiVaiVai()
-{
+{   
+    if(!RimaniQui)
+    {
     Nemici.forEach(N => {if(sessionStorage.getItem("Nemico scelto") == N.nome){NemicoScelto = N;}});
     Armi.forEach(A => {if(sessionStorage.getItem("ShotgunEquipaggiato") == A.nome){ShotgunEquipaggiato = A;} else if (sessionStorage.getItem("AssaltoEquipaggiato") == A.nome){AssaltoEquipaggiato = A;} else if (sessionStorage.getItem("CecchinoEquipaggiato") == A.nome){CecchinoEquipaggiato = A;}});
     Mischie.forEach(M => {if(sessionStorage.getItem("MischiaEquipaggiata") == M.nome){MischiaEquipaggiata = M;}});
@@ -310,11 +312,9 @@ function VaiVaiVai()
     BottoneAssalto.querySelector('img').src = `Immagini/Anteprime/${AssaltoEquipaggiato.nome}_anteprima.jpg`;
     BottoneCecchino.querySelector('img').src = `Immagini/Anteprime/${CecchinoEquipaggiato.nome}_anteprima.jpg`;
     difficoltà = Number(sessionStorage.getItem("Difficoltà"));
-    new Image().src = `./Immagini/Armi/${MischiaEquipaggiata.nome}_attaccando.jpg`;
-    new Image().src = `./Immagini/Armi/${ShotgunEquipaggiato.nome}_attaccando.jpg`;
-    new Image().src = `./Immagini/Armi/${AssaltoEquipaggiato.nome}_attaccando.jpg`;
-    new Image().src = `./Immagini/Armi/${CecchinoEquipaggiato.nome}_attaccando.jpg`;
+    ScaricaImmagini(MischiaEquipaggiata.nome,ShotgunEquipaggiato.nome,AssaltoEquipaggiato.nome,CecchinoEquipaggiato.nome,NemicoScelto.nome);
     AggiornaImpostazioni();
     Filtra(filtro);
+    }
     Gioco();
 }
