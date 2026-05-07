@@ -340,5 +340,9 @@ function VaiVaiVai()
     AggiornaImpostazioni();
     Filtra(filtro);
     }
+    else
+    {
+        PannelloConferma.close();
+    }
     Gioco();
 }
