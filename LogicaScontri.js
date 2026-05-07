@@ -44,6 +44,30 @@ let BottoneShotgun = document.querySelector("#Shotgun");
 let BottoneAssalto = document.querySelector("#Assalto");
 let BottoneCecchino = document.querySelector("#Cecchino");
 let Elementi = [Boss,ArmaInCanna,Mirino,PiuInfo,AttaccoNemico,BarraVita,hp,BarraMischia,Segnaposto1,Segnaposto2,RumoriArma,FrasiNemico,PannelloConferma,PannelloPausa,PannelloOpzioni,BottoneMischia,BottoneShotgun,BottoneCecchino,BottoneAssalto,BottoneRicarica,BottoneSchiva,BottoneSpara,BottoneMuoviSu,BottoneMuoviGiù];
+function ScaricaImmaginiArmi(a)
+{   
+    new Image().src = `./Immagini/Armi/${a}.jpg`;
+    new Image().src = `./Immagini/Armi/${a}_attaccando.jpg`;
+    new Image().src = `./Immagini/Armi/${a}_ricarica1.jpg`;
+    new Image().src = `./Immagini/Armi/${a}_ricarica2.jpg`;
+}
+function ScaricaImmagini(m,s,a,c,n)
+{
+    [m,s,a,c].forEach(A => {ScaricaImmaginiArmi(A)});
+    new Image().src = `./Immagini/Nemici/${n}.jpg`;
+    new Image().src = `./Immagini/Nemici/${n}_attaccando.jpg`;
+}
+function Riprova()
+{
+    posG = 0;
+    posA = 100;
+    distanza = 100;
+    distanzaAG = 100;
+    Giocando = true;
+    InPausa = false;
+    risparo = true;
+    VaiVaiVai();
+}
 function AggiornaMirino(ArmaEquipaggiata,distanza)
 {
     if(ArmaEquipaggiata.portata >= distanza && Mirino.style.color != "red" && Giocando)
