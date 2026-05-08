@@ -1,47 +1,47 @@
 let BottoneConferma = document.querySelector('#Conferma');
-function SegnaRisposta(classe,id)
-{
+function SegnaRisposta(classe,nome,s)
+{   
     document.querySelectorAll(`${classe}`).forEach(Blocco => {Blocco.style.backgroundColor = "black"});
-    Nemici.forEach(N => {ColoraNemico(N.nome)});
-    document.querySelector(`#${id}`).style.backgroundColor = "blue";
-}
-function ScegliNemico(classe,nome)
-{
-    Nemici.forEach(N => {if(N.nome == `${nome}`){NemicoScelto = N;}});
-    SegnaRisposta(classe,nome.replace(/\s/g, ''));
-}
-function ScegliMischia(classe,nome)
-{
-    Mischie.forEach(M => {if(M.nome == `${nome}`){MischiaEquipaggiata = M;}});
-    SegnaRisposta(classe,nome.replace(/\s/g, ''));
-}
-function ScegliArma(classe,nome,s)
-{
-    Armi.forEach(A => {if(A.nome == `${nome}`){if(s == 1){ShotgunEquipaggiato = A;} else if(s == 2){AssaltoEquipaggiato = A;} else if(s == 3){CecchinoEquipaggiato = A;}}});
-    SegnaRisposta(classe,nome.replace(/\s/g, ''));
-}
-function ScegliDifficoltà(classe,id,d)
-{
-    difficoltà = d;
-    SegnaRisposta(classe,id);
+    switch(classe)
+    {
+        case '.N':
+        Nemici.forEach(N => {if(N.nome == `${nome}`){NemicoScelto = N;}});
+        Nemici.forEach(N => {ColoraNemico(N.nome)});
+        break;
+
+        case '.M':
+        Mischie.forEach(M => {if(M.nome == `${nome}`){MischiaEquipaggiata = M;}});
+        break;
+
+        case '.D':
+        difficoltà = s;
+        break;
+
+        default:
+        Armi.forEach(A => {if(A.nome == `${nome}`){if(s == 1){ShotgunEquipaggiato = A;} else if(s == 2){AssaltoEquipaggiato = A;} else if(s == 3){CecchinoEquipaggiato = A;}}});
+        break;
+    }
+    document.querySelector(`#${nome.replace(/\s/g, '')}`).style.backgroundColor = "blue";
 }
 function ColoraNemico(Nome)
 {
-    if(window.localStorage.getItem(`${Nome}`) == 1)
-    {
+    switch(window.localStorage.getItem(`${Nome}`))
+    {   
+        case 1:
         document.querySelector(`#${Nome.replace(/\s/g, '')}`).style.backgroundColor = "green";
-    }
-    if(window.localStorage.getItem(`${Nome}`) == 2)
-    {
+        break;
+    
+        case 2:
         document.querySelector(`#${Nome.replace(/\s/g, '')}`).style.backgroundColor = "orange";
-    }
-    if(window.localStorage.getItem(`${Nome}`) == 3)
-    {
+        break;
+    
+        case 3:
         document.querySelector(`#${Nome.replace(/\s/g, '')}`).style.backgroundColor = "tomato";
-    }
-    if(window.localStorage.getItem(`${Nome}`) == 4)
-    {
+        break;
+        
+        case 4:
         document.querySelector(`#${Nome.replace(/\s/g, '')}`).style.backgroundColor = "purple";
+        break;
     }
 }
 function Conferma()
@@ -60,6 +60,6 @@ function Conferma()
     {
         BottoneConferma.textContent = "Controlla le risposte"; 
         BottoneConferma.classList.add('Scuoti'); 
-        setTimeout(() =>  {BottoneConferma.classList.remove('Scuoti'); BottoneConferma.textContent = "Battaglia battaglia battaglia!";},1000)
+        setTimeout(() =>  {BottoneConferma.classList.remove('Scuoti'); BottoneConferma.textContent = "Battaglia battaglia battaglia!";},1000);
     }
 }
