@@ -7,21 +7,24 @@ function SegnaRisposta(classe,nome,s)
         case '.N':
         Nemici.forEach(N => {if(N.nome == `${nome}`){NemicoScelto = N;}});
         Nemici.forEach(N => {ColoraNemico(N.nome)});
+        document.querySelector(`#${nome.replace(/\s/g, '')}`).style.backgroundColor = "blue";
         break;
 
         case '.M':
         Mischie.forEach(M => {if(M.nome == `${nome}`){MischiaEquipaggiata = M;}});
+        document.querySelector(`#${nome.replace(/\s/g, '')}`).style.backgroundColor = "blue";
         break;
 
         case '.D':
         difficoltà = s;
+        document.querySelector(`#${nome}`).style.backgroundColor = "blue";
         break;
 
         default:
         Armi.forEach(A => {if(A.nome == `${nome}`){if(s == 1){ShotgunEquipaggiato = A;} else if(s == 2){AssaltoEquipaggiato = A;} else if(s == 3){CecchinoEquipaggiato = A;}}});
+        document.querySelector(`#${nome.replace(/\s/g, '')}`).style.backgroundColor = "blue";
         break;
     }
-    document.querySelector(`#${nome.replace(/\s/g, '')}`).style.backgroundColor = "blue";
 }
 function ColoraNemico(Nome)
 {
