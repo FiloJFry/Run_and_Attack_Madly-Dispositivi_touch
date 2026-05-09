@@ -62,7 +62,7 @@ class Nemico
     {
         return this._Frasi;
     }
-    AllAttacco(Protagonista)
+    AllAttacco()
     {   
         if(!InPausa)
         {
@@ -72,23 +72,27 @@ class Nemico
             AttaccoNemico.style.color = this.coloreAttacco;
             let t = 0;
             let dice = setInterval(() => {if(!InPausa){t += 100; if(t >= 1000){Boss.setAttribute('src',`./Immagini/Nemici/${this.nome}.jpg`); if(Giocando){FrasiNemico.textContent = "";} clearInterval(dice)}}},100);
-            this.Attacco(Protagonista);
+            this.Attacco();
         }
     }
-    Attacco(Protagonista)
+    Attacco()
     {   
         setTimeout(() => {
         if(distanzaAG > 0 && !InPausa)
         {
             distanzaAG = distanzaAG - 1;
             AttaccoNemico.style.transform = `scale(${10/Math.max(distanzaAG,1)})`;
-            this.Attacco(Protagonista);
+            this.Attacco();
         }
-        else
+        else if(distanzaAG == 0)
         {   
-            Colpito(Protagonista);
+            Colpito();
             AllAttacco = false;
             return;
+        }
+        else
+        {
+            this.Attacco();
         }},1000/this.velocità);
     }
     Moto()
@@ -101,7 +105,7 @@ class Nemico
     AggiornaPosizione(direzione,spazio)
     {   
         setTimeout(() => {
-        if(spazio > 0 && InMoto && posA >= 0 && posA <= 200 && !InPausa)
+        if(spazio > 0 && !InPausa)
         {
         if(direzione && posA > 0)
         {
@@ -141,14 +145,18 @@ class Nemico
             distanzaAG = distanza;
             AttaccoNemico.style.transform = `scale(${10/Math.max(distanzaAG,1)})`;
         }
-        AggiornaMirino(ArmaPresa,distanza);
+        AggiornaMirino(this,distanza);
         this.AggiornaPosizione(direzione,spazio);
         }
         }
-        else
+        else if(spazio == 0)
         {
             InMoto = false;
             return;
+        }
+        else
+        {
+            this.AggiornaPosizione(direzione,spazio);
         }},1000/this.velocità);
     }
 
@@ -248,25 +256,25 @@ class Arma
     {
         return this._Rumori;
     }
-    Fuoco(NemicoScelto)
+    Fuoco()
     {
-        ArmaPresa.Spara(NemicoScelto);
+        this.Spara();
         Colpo = true;
-        if(ArmaPresa.altorateo)
+        if(this.altorateo)
         {   
-            Spara = setInterval(() => {ArmaPresa.Spara(NemicoScelto);},ArmaPresa.rateo + 20);
+            Spara = setInterval(() => {this.Spara();},this.rateo + 20);
         }
         else if(risparo)
         {   
             risparo = false;
             let cont = 0;
-            gap = setInterval(() => {if(!InPausa){cont += 100; if(cont >= this.rateo + 20){clearInterval(gap); risparo = true;}}},100);
+            gap = setInterval(() => {if(!InPausa){cont += 100; if(cont >= this.rateo + 100){clearInterval(gap); risparo = true;}}},100);
         }
     }
     Arresta()
     {
         Colpo = false;
-        if(ArmaPresa.altorateo)
+        if(this.altorateo)
         {
             if(Spara != undefined)
             {
@@ -275,7 +283,7 @@ class Arma
             }
         }
     }
-    Spara(NemicoScelto)
+    Spara()
     {    
         if(this.munizioni > 0)
         { 
@@ -283,7 +291,7 @@ class Arma
             this.munizioni -= 1;
             PiuInfo.textContent = `${this.munizioni}|${this.inventario}`;
             RumoriArma.textContent = `${this.Rumori[0]}`; 
-            Preso(this,distanza,NemicoScelto);
+            Preso();
             setTimeout(() => {ArmaInCanna.setAttribute('src',`./Immagini/Armi/${this.nome}.jpg`); RumoriArma.textContent = "";},20);
         }
         else
@@ -357,7 +365,7 @@ class Mischia extends Arma
         super(nome,danni,portata,munizioni,rateo,altorateo,mirino,Rumori);
         this._inventario = 0;
     }
-    Spara(NemicoScelto)
+    Spara()
     {
         if(this.munizioni == 1)
         {
@@ -465,7 +473,7 @@ class Personaggio
         AttaccoNemico.style.transform = `scale(${10/Math.max(distanzaAG,1)})`;
         Segnaposto1.style.transform = `scale(${10/Math.max(posG,10)})`;
         Segnaposto2.style.transform = `scale(${10/Math.max(200 - posG,10)})`;
-        AggiornaMirino(ArmaPresa,distanza);
+        AggiornaMirino(this,distanza);
         this.Muovi(verso);
     }
     }
