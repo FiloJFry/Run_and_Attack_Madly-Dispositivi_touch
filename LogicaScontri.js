@@ -42,6 +42,19 @@ let BottoneShotgun = document.querySelector("#Shotgun");
 let BottoneAssalto = document.querySelector("#Assalto");
 let BottoneCecchino = document.querySelector("#Cecchino");
 let Elementi = [Boss,ArmaInCanna,Mirino,PiuInfo,AttaccoNemico,BarraVita,hp,BarraMischia,Segnaposto1,Segnaposto2,RumoriArma,FrasiNemico,PannelloConferma,PannelloPausa,PannelloOpzioni,BottoneMischia,BottoneShotgun,BottoneCecchino,BottoneAssalto,BottoneRicarica,BottoneSchiva,BottoneSpara,BottoneMuoviSu,BottoneMuoviGiù];
+function ScaricaImmaginiArma(a)
+{
+    new Image().src = `./Immagini/Armi/${a}.jpg`;
+    new Image().src = `./Immagini/Armi/${a}_attaccando.jpg`;
+    new Image().src = `./Immagini/Armi/${a}_ricarica1.jpg`;
+    new Image().src = `./Immagini/Armi/${a}_ricarica2.jpg`;
+}
+function ScaricaImmagini(m,s,a,c,n)
+{
+    [m,s,a,c].forEach(A => {ScaricaImmaginiArma(A)});
+    new Image().src = `./Immagini/Nemici/${n}.jpg`;
+    new Image().src = `./Immagini/Nemici/${n}_attaccando.jpg`;
+}
 function AggiornaMirino()
 {
     if(ArmaPresa.portata >= distanza && Mirino.style.color != "red")
@@ -298,6 +311,7 @@ function VaiVaiVai()
     BottoneCecchino.querySelector('img').src = `Immagini/Anteprime/${CecchinoEquipaggiato.nome}_anteprima.jpg`;
     difficoltà = Number(sessionStorage.getItem("Difficoltà"));
     AggiornaImpostazioni();
+    ScaricaImmagini(MischiaEquipaggiata.nome,ShotgunEquipaggiato.nome,AssaltoEquipaggiato.nome,CecchinoEquipaggiato.nome,NemicoScelto.nome);
     Filtra(filtro);
     Gioco();
 }
