@@ -51,7 +51,9 @@ function ScaricaImmaginiArma(a)
 }
 function ScaricaImmagini(m,s,a,c,n)
 {
-    [m,s,a,c].forEach(A => {ScaricaImmaginiArma(A)});
+    [s,a,c].forEach(A => {ScaricaImmaginiArma(A)});
+    new Image().src = `./Immagini/Armi/${m}.jpg`;
+    new Image().src = `./Immagini/Armi/${m}_attaccando.jpg`;
     new Image().src = `./Immagini/Nemici/${n}.jpg`;
     new Image().src = `./Immagini/Nemici/${n}_attaccando.jpg`;
 }
