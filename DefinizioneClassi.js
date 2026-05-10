@@ -84,7 +84,7 @@ class Nemico
             AttaccoNemico.style.transform = `scale(${10/Math.max(distanzaAG,1)})`;
             this.Attacco();
         }
-        else if(distanzaAG == 0)
+        else if(distanzaAG <= 0)
         {   
             Colpito();
             AllAttacco = false;
