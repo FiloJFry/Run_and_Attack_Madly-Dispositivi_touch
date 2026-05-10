@@ -46,8 +46,8 @@ function ScaricaImmaginiArma(a)
 {
     new Image().src = `./Immagini/Armi/${a}.jpg`;
     new Image().src = `./Immagini/Armi/${a}_attaccando.jpg`;
-    new Image().src = `./Immagini/Armi/${a}_ricarica1.jpg`;
-    new Image().src = `./Immagini/Armi/${a}_ricarica2.jpg`;
+    new Image().src = `./Immagini/Ricarica/${a}_ricarica1.jpg`;
+    new Image().src = `./Immagini/Ricarica/${a}_ricarica2.jpg`;
 }
 function ScaricaImmagini(m,s,a,c,n)
 {
