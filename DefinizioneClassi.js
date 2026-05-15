@@ -251,18 +251,115 @@ class Arma
     set Rumori(suoni)
     {
         this._Rumori = suoni; 
+ constructor(nome,danni,portata,munizioni,rateo,velocità,altorateo,mirino,Rumori)
+    {
+        this._nome = nome;
+        this._danni = danni;
+        this._portata = portata;
+        this._munizioni = munizioni;
+        this._maxmunizioni = munizioni;
+        this._inventario = 4*munizioni;
+        this._rateo = rateo;
+        this._altorateo = altorateo;
+        this._velocità = velocità;
+        this._mirino = mirino;
+        this._Rumori = Rumori;
+    }
+    set nome(name)
+    {   
+        this._nome = name;
+    }
+    get nome()
+    {
+        return this._nome;
+    }
+    set danni(danni)
+    {
+        this._danni = danni;
+    }
+    get danni()
+    {
+        return this._danni;
+    }
+    set portata(portata)
+    {
+        this._portata = portata;
+    }
+    get portata()
+    {
+        return this._portata;
+    }
+    set munizioni(ammo)
+    {
+        this._munizioni = ammo;
+    }
+    get munizioni()
+    {
+        return this._munizioni;
+    }
+    set inventario(ammo)
+    {
+        this._inventario = ammo;
+    }
+    get inventario()
+    {
+        return this._inventario;
+    }
+    set rateo(rateo)
+    {
+        this._rateo = rateo;
+    }
+    get rateo()
+    {
+        return this._rateo;
+    }
+    set altorateo(altorateo)
+    {
+        this._altorateo = altorateo;
+    }
+    get altorateo()
+    {
+        return this._altorateo;
+    }
+    set velocità(v)
+    {
+        this._velocità = v;
+    }
+    get velocità()
+    {
+        return this._velocità;
+    }
+    set maxmunizioni(riferimento)
+    {
+        this._maxmunizioni = riferimento;
+    }
+    get maxmunizioni()
+    {
+        return this._maxmunizioni;
+    }
+    set mirino(testo)
+    {
+        this._mirino = testo;
+    }
+    get mirino()
+    {
+        return this._mirino;
+    }
+    set Rumori(suoni)
+    {
+        this._Rumori = suoni; 
     }
     get Rumori()
     {
         return this._Rumori;
     }
-    Fuoco()
+    Fuoco(NemicoScelto)
     {
-        this.Spara();
+        this.Spara(NemicoScelto);
         Colpo = true;
         if(this.altorateo)
         {   
-            Spara = setInterval(() => {this.Spara();},this.rateo + 20);
+            Spara = setInterval(() => {this.Spara(NemicoScelto);},ArmaPresa.rateo + 20);
         }
         else if(risparo)
         {   
@@ -283,7 +380,7 @@ class Arma
             }
         }
     }
-    Spara()
+    Spara(NemicoScelto)
     {    
         if(this.munizioni > 0)
         { 
@@ -291,7 +388,7 @@ class Arma
             this.munizioni -= 1;
             PiuInfo.textContent = `${this.munizioni}|${this.inventario}`;
             RumoriArma.textContent = `${this.Rumori[0]}`; 
-            Preso();
+            setTimeout(() => {Preso(this,distanza,NemicoScelto);},1000*distanza/this.velocità);
             setTimeout(() => {ArmaInCanna.setAttribute('src',`./Immagini/Armi/${this.nome}.jpg`); RumoriArma.textContent = "";},20);
         }
         else
@@ -360,10 +457,16 @@ class Arma
 }
 class Mischia extends Arma
 {   
-    constructor(nome,danni,portata,munizioni,rateo,altorateo,mirino,Rumori)
+    constructor(nome,danni,portata,munizioni,rateo,velocità,altorateo,mirino,Rumori)
     {
-        super(nome,danni,portata,munizioni,rateo,altorateo,mirino,Rumori);
+        super(nome,danni,portata,munizioni,rateo,velocità,altorateo,mirino,Rumori);
+        this._munizioni = 1;
         this._inventario = 0;
+        this._rateo = 45000;
+        this._velocità = Infinity;
+        this._altorateo = false;
+        this._mirino = munizioni;
+        this._Rumori = rateo;
     }
     Spara()
     {
