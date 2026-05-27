@@ -501,13 +501,13 @@ class Personaggio
     InCarica = true;
     ArmaInCanna.addEventListener('animationend',(event) => {if(event.animationName == "vaiGiù") {{ArmaInCanna.classList.remove('VaiGiù');
     ArmaInCanna.classList.add('TornaSu');
-    ArmaInCanna.setAttribute('src',`./Immagini/Armi/${ArmaPresa.nome}.jpg`);
+    ArmaInCanna.setAttribute('src',`./Immagini/Armi/${ArmaEquipaggiata.nome}.jpg`);
     ArmaInCanna.addEventListener('animationend',(event) => {if(event.animationName == "tornaSu"){
     ArmaInCanna.classList.remove('TornaSu');
-    Mirino.innerHTML = ArmaPresa.mirino;
-    if(ArmaPresa.rateo != 45000)
+    Mirino.innerHTML = ArmaEquipaggiata.mirino;
+    if(ArmaPresa.rateo != null)
     {
-        PiuInfo.textContent = `${ArmaPresa.munizioni}|${ArmaPresa.inventario}`;
+        PiuInfo.textContent = `${ArmaEquipaggiata.munizioni}|${ArmaEquipaggiata.inventario}`;
     } 
     else
     {
