@@ -391,10 +391,10 @@ function Gioco()
     BottoneMuoviGiù.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneMuoviGiù.style.opacity = "0.5"; Corri = false;}});
     BottoneSpara.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneSpara.style.opacity = "0.5"; ArmaPresa.Arresta();}});
     BottoneSuperSpara.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneSuperSpara.style.opacity = "0.5"; ArmaPresa.Estensione.SuperArresta();}});
-    document.addEventListener('tocuhstart',(event) => {event.stopPropagation(); if(!InPausa){if(Spara != undefined){clearInterval(Spara); Spara = undefined;} document.querySelectorAll(".movimento , #Spara","#SuperSpara").forEach(B => {B.style.opacity = "0.5";}); PausaRiprendi(NemicoScelto)}});
+    document.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){if(Spara != undefined){clearInterval(Spara); Spara = undefined;} document.querySelectorAll(".movimento , #Spara","#SuperSpara").forEach(B => {B.style.opacity = "0.5";}); PausaRiprendi(NemicoScelto)}});
         Partita = setInterval(() => {
         let disc = Math.random()*Math.max(30,Math.min(distanza,60))/40 - Math.sqrt(Protagonista.vita)/(Math.trunc(Math.sqrt(Protagonista.vita))*10);
-        if(disc < 0.6)
+        if(disc < 0.5)
         {   
             if(!AllAttacco && (distanza > NemicoScelto.velocità || (PuòSchivare && distanza/NemicoScelto.velocità > 0.1)) && (disc > 0.12 || AltAttacco))
             {   
