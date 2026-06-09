@@ -269,11 +269,12 @@ h4{
 }
 #Estensione{
     width: 14.5vw;
-    height: 3vw;
+    height: 3.5vw;
     bottom: 0vh;
     right: 0vw;
     color: black;
-    font-size: 6vw;
+    font-size: 3vw;
+    align-items: flex-end;
 }
 #GrigliaEstensione{
     width: 20.4vw;
