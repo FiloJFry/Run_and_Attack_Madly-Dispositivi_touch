@@ -1,14 +1,14 @@
-<!doctype HTML> 
+<!doctype HTML>
 <html lang = "it">
     <head>
         <meta charset = "UTF-8"/>
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0 user-scalable=no">
+        <meta class = "viewport" content = "width=device-width, initial-scale=1.0 user-scalable=no">
         <title>Run and Attack Madly</title>
         <link rel = "stylesheet" href = "AspettoDiBattaglia.css">
         <link rel = "stylesheet" type="text/css" href = "MenùOpzioni.css" />
         <link rel = "stylesheet" href = "Animazioni.css">
     </head>
-    <body onload = "VaiVaiVai()">
+    <body onload = "VaiVaiVai()"><!--onload = "VaiVaiVai()"-->
         <h5 id = "S1" translate = "no">■</h5>
         <h5 id = "S2" translate = "no">■</h5>
         <div class = "Centratore">
@@ -22,18 +22,24 @@
         <h5 id = "Mirino" translate = "no" style = "color: white">I<br/>---X---<br>I</h5>
         <h5 id = "Rumori"></h5>
         <h5 id = "Frasi"></h5>
-        <div id = "Info">1000|9000</div>
-        <div id = "PienBarraMischia"></div><div id = "BarraMischia"></div>
+        <h5 id = "SalvezzInfo"></h5>
+        <h5 id = "Countdown"></h5>
+        <h5 class = "Info" id = "Munizioni">1000|9000</h5>
+        <div class = "MiniBarra" id = "PienBarraMischia"></div><div class = "MiniBarra" id = "BarraMischia"></div>
+        <div class = "MiniBarra" id = "GrigliaEstensione"></div><div class = "MiniBarra" id = "BarraEstensione"></div>
+        <h5 class = "Info" id = "NomEstensione">Megadistruzione</h5>
         <div id = "HP">HP: 4</div>
         <button class = "Comandi movimento" id = "MuoviSu">↑</button>
         <button class = "Comandi" id = "Schiva">»</button>
         <button class = "Comandi movimento" id = "MuoviGiù">↓</button>
         <button class = "Comandi" id = "Spara">⌂</button>
         <button class = "Comandi" id = "Ricarica">ᶗ</button>
+        <button class = "Comandi" id = "SuperSpara">﴾Ω﴿</button>
         <button class = "CambioArmi" id = "Shotgun"><img class = "MiniArma" src = "" alt = "Shotgun equipaggiato"/></button>
         <button class = "CambioArmi" id = "Assalto"><img class = "MiniArma" src = "" alt = "Assalto equipaggiato"/></button>
         <button class = "CambioArmi" id = "Cecchino"><img class = "MiniArma" src = "" alt = "Cecchino equipaggiato"/></button>
         <button class = "CambioArmi" id = "Mischia"><img class = "MiniArma" src = "" alt  = "MischiaEquipaggiata"/></button>
+        <button class = "CambioArmi" id = "Estensione">↔</button>
         <div id = "PGiocabile" class = "Personaggio"><img id= "Arma" class = "Personaggio" src = "./Immagini/Armi/Distributore di palline.jpg" alt = "Arma"/></div>
         <dialog id = "Pausa">
             <div id = "SchermataPausa">
@@ -54,7 +60,68 @@
         <dialog id="Opzioni">
         <div id="SchermataOpzioni">
                 <b>Rumori delle armi</b>
-               <div class = "Riga"><button type = "button" id = "MostraISuoni" class = "SiONo"  onclick = "if(!MostraSuoni){MostraSuoni = true;} else{MostraSuoni = false;} AlternaSiONo(BottoneSuoni,MostraSuoni);"></button></div>
+                <div class = "Riga"><button type = "button" id = "MostraISuoni" class = "SiONo"  onclick = "if(!MostraSuoni){MostraSuoni = true;} else{MostraSuoni = false;} AlternaSiONo(BottoneSuoni,MostraSuoni);"></button></div>
+                                <b>Inverti pannello HP e info delle armi</b>
+                <div class = "Riga">Sposta il pannello degli HP a destra e tutte le scritte e barre realtive alle armi a sinsitra
+                <button type = "button" id = "InvertiVA" class = "SiONo"  onclick = "if(!InvertiVA){InvertiVA = true;} else{InvertiVA = false;} AlternaSiONo(BottoneInvertiVA,InvertiVA);"></button></div>
+                <b>Inverti bottoni di movimento e di cambio armi ed estensione</b>
+                <div class = "Riga">Sposta i bottoni di movimento a destra e quelli per cambiare armi ed estensione a sinsitra
+                <button type = "button" id = "InvertiMC" class = "SiONo"  onclick = "if(!InvertiMC){InvertiMC = true;} else{InvertiMC = false;} AlternaSiONo(BottoneInvertiMC,InvertiMC);"></button></div>
+                <b>Bottone di cambio estensione sopra</b>
+                <div class = "Riga">Sposta il bottone di cambio estensione sopra quelli di cambio arma
+                <button type = "button" id = "BottoneAltSopra" class = "SiONo"  onclick = "if(!BottoneAltSopra){BottoneAltSopra = true;} else{BottoneAltSopra = false;} AlternaSiONo(TastoBottoneAltSopra,BottoneAltSopra);"></button></div>
+                <b>Posizione dei bottoni di cambio armi</b>
+                <div class = "Riga"><b>Fucile shotgun </b><select class = Cambio name = Shotgun>
+                    <option value = 1>1</option>
+                    <option value = 2>2</option>
+                    <option value = 3>3</option>
+                    <option value = 4>4</option>
+                </select></div>
+                <div class = "Riga"><b>Fucile d'assalto </b><select class = Cambio name = Assalto>
+                    <option value = 1>1</option>
+                    <option value = 2>2</option>
+                    <option value = 3>3</option>
+                    <option value = 4>4</option>
+                </select></div>
+                <div class = "Riga"><b>Fucile da cecchino </b><select class = Cambio name = Cecchino>
+                    <option value = 1>1</option>
+                    <option value = 2>2</option>
+                    <option value = 3>3</option>
+                    <option value = 4>4</option>
+                </select></div>
+                <div class = "Riga"><b>Arma da mischia </b><select class = Cambio name = Mischia>
+                    <option value = 1>1</option>
+                    <option value = 2>2</option>
+                    <option value = 3>3</option>
+                    <option value = 4>4</option>
+                </select></div>
+                <b style = "font-size: 3vw; margin: 1.5vw;">1---2<br/>|@@|<br/>3---4</b>
+                <b>Posizione dei bottoni di attacco,schivata e ricarica</b>
+                <div class = "Riga"><b>Schiva </b><select class = Super name = Schiva>
+                    <option value = 1>1</option>
+                    <option value = 2>2</option>
+                    <option value = 3>3</option>
+                    <option value = 4>4</option>
+                </select></div>
+                <div class = "Riga"><b>Spara </b><select class = Super name = Spara>
+                    <option value = 1>1</option>
+                    <option value = 2>2</option>
+                    <option value = 3>3</option>
+                    <option value = 4>4</option>
+                </select></div>
+                <div class = "Riga"><b>Ricarica </b><select class = Super name = Ricarica>
+                    <option value = 1>1</option>
+                    <option value = 2>2</option>
+                    <option value = 3>3</option>
+                    <option value = 4>4</option>
+                </select></div>
+                <div class = "Riga"><b>SuperSpara </b><select class = Super name = SuperSpara>
+                    <option value = 1>1</option>
+                    <option value = 2>2</option>
+                    <option value = 3>3</option>
+                    <option value = 4>4</option>
+                </select></div>
+                <b style = "font-size: 3vw; margin: 1.5vw;">1--------2<br/>|@@@@*|<br/>3--------4</b>
                 <b>Colori</b>
                 <div class = "Riga"><button type = "button" id = "Filtro" onclick = "if(filtro == null){filtro = 1; BottoneFiltro.textContent = 'Bianco e nero';} 
                 else if(filtro == 1){filtro ++; BottoneFiltro.textContent = 'Flashback';} else if(filtro == 2){filtro = null; BottoneFiltro.textContent = 'Predefinito';} Filtra(filtro);">Predefinito</button></div>

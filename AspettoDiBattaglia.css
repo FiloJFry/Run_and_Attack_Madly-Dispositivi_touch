@@ -63,12 +63,12 @@ h4{
     top: 16vh;
 }
 #HP{
-    border: 0.2em solid white;
-    background-color: blue;
+    border: 0.2em solid gray;
+    background-color: brown;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 4vw;
     font-weight: bold;
-    color: white;
+    color: gray;
     margin: 2vw;
     position: absolute;
     bottom: 52vh;
@@ -79,16 +79,16 @@ h4{
     position: absolute;
     z-index: 2;
 }
-#Info{
-    width: 8vw;
-    padding: 1vw;
+.Info{
     position: absolute;
-    bottom: 64vh;
     z-index: 2;
     color: white;
     font-size: 2.5vw;
-    right: 1vw;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#Munizioni{
+    bottom: 64vh;
+    left: 79vw;
 }
 #PienBarra{
     width: 32vw;
@@ -108,24 +108,22 @@ h4{
     z-index: 3;
     position: relative;
 }
-#PienBarraMischia{
+.MiniBarra{
     width: 20vw;
     height: 3vw;
-    background-color: white;
     position: absolute;
-    z-index: 2;
-    bottom: 55vh;
     margin: 1vw;
+}
+#PienBarraMischia{
+    background-color: white;
+    z-index: 2;
+    bottom: 62vh;
     right: 0;
 }
 #BarraMischia{
-    width: 20vw;
-    height: 3vw;
-    background-color: blue;
-    position: absolute;
+    background-color: orange;
     z-index: 3;
-    bottom: 55vh;
-    margin: 1vw;
+    bottom: 62vh;
     right: 0;
 }
 #S1{
@@ -208,11 +206,10 @@ h4{
     opacity: 0.5;
     border-radius: 0.5vw;
     position: absolute;
-    font-size: 4vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 3; 
+    z-index: 3;
 }
 .MiniArma{
     object-fit: contain;
@@ -220,12 +217,13 @@ h4{
     height: 6.25vw;
 }
 .movimento{
+    left: 4vw;
     background-color:aqua;
 }
 #Schiva{
-    background-color:blue;
+    background-color:lightblue;
     left: 17vw;
-    bottom: 12.5vh
+    bottom: 25vh;
 }
 #Spara{
     background-color:red;
@@ -235,32 +233,90 @@ h4{
 }
 #Ricarica{
     background-color:green;
-    right: 18vw;
+    left: 17vw;
     bottom: 0vh;
 }
+#SuperSpara{
+    background-color: blue;
+    right: 18vw;
+    bottom: 0vh;
+    font-size: 4.5vw;
+}
 #MuoviSu{
-    left: 4vw;
     bottom: 25vh;
 }
 #MuoviGiù{
-    left: 4vw;
     bottom: 0vh;
 }
 #Mischia{
     right: 0vw;
-    bottom: 5vh;
+    bottom: 15vh;
 }
 #Shotgun{
     right: 7.5vw;
-    bottom: 20vh;
+    bottom: 30vh;
 }
 #Assalto{
     right: 0vw;
-    bottom: 20vh;
+    bottom: 30vh;
 }
 #Cecchino{
     right: 7.5vw;
-    bottom: 5vh;
+    bottom: 15vh;
+}
+#Estensione{
+    width: 14.5vw;
+    bottom: 0vh;
+    right: 0vw;
+    color: black;
+    font-size: 12vw;
+    padding-bottom: 3.75vw;
+}
+#GrigliaEstensione{
+    width: 20.4vw;
+    height: 3.2vw;
+    background-color: transparent;
+    background-size: var(--spazicariche) 3.2vw;
+    background-image: linear-gradient(to right, gray 0.05vw, transparent 0.05vw);
+    border: 0.25vw solid white;
+    --spazicariche: 5vw;
+    z-index: 4;
+    bottom: 54vh;
+    right: 0vw;
+}
+#BarraEstensione{
+    width: 20.25vw;
+    background-color: blue;
+    z-index: 3;
+    bottom: 54vh;
+    right: 0vw;
+}
+#NomEstensione{
+    bottom: 43.5vh;
+    display: flex;
+    flex-direction: row;
+    font-size: 2vw;
+    right: 1vw;
+}
+#SalvezzInfo{
+    color: white;
+    font-size: 2.5vw;
+    font-style: italic;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    top: 0vw;
+    margin: 2.5vw;
+    left: 9.5vw;
+}
+#Countdown{
+    color: white;
+    font-size: 3vw;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: absolute;
+    top: 4vw;
+    margin: 5vw;
+    left: 16vw;
 }
 .Filtro{
     filter: grayscale(100%);

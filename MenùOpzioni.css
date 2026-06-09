@@ -28,6 +28,13 @@ button{
     align-items: center;
     justify-content: center;
 }
+select{
+    background-color: black;
+    border: solid white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+    color: white;
+}
 #Filtro{
     background-color: black;
     border: solid white;

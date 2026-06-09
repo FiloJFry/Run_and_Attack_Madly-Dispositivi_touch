@@ -51,6 +51,8 @@
     12.5%
     {
         background-color: red;
+        color: white;
+        border-color: white;
     }
     25%
     {
@@ -90,8 +92,28 @@
     }
     100%
     {
-        background-color: blue;
+        background-color: brown;
+        color: gray;
+        border-color: gray;
     }
+}
+@keyframes SuperAttacco
+{
+    from{
+        background-color: black;
+    }
+    to{
+        background-color: var(--attaccolore);
+    }
+}
+@property --attaccolore
+{
+  syntax: '<color>';
+  inherits: false;
+  initial-value: white;
+}
+.Sfondone{
+    animation: SuperAttacco 8s linear;
 }
 .LampeggiaHP{
     animation: Lampeggianti 2.5s ease-in-out;
@@ -100,10 +122,10 @@
     animation: CaricaBarra 45s linear;
 }
 .TornaSu{
-    animation: tornaSu 0.2s ease-in-out;
+    animation: tornaSu 0.5s ease-in-out;
 }
 .VaiGiù{
-    animation: vaiGiù 0.2s ease-in-out;
+    animation: vaiGiù 0.5s ease-in-out;
 }
 .Scuoti{
     animation: scuoti 0.5s infinite ease-in-out;
