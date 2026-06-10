@@ -1,5 +1,5 @@
-html {
-  touch-action: none;
+html{
+    touch-action: none;
 }
 *{
     box-sizing: border-box;
@@ -274,7 +274,6 @@ h4{
     right: 0vw;
     color: black;
     font-size: 4.5vw;
-    align-items: flex-end;
 }
 #GrigliaEstensione{
     width: 20.4vw;
