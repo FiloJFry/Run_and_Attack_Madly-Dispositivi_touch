@@ -95,7 +95,7 @@ class Nemico
         Countdown.textContent = 8;
         let nds = 80;
         conto = setInterval(() => {if(!InPausa){nds--; if(nds%10 == 0 && nds > 0){Countdown.textContent = nds/10;} else if(nds == 0){clearInterval(conto);}}},100);
-        Sfondo.addEventListener('animationend',(event) => SuperColpito(event));
+        Sfondo.addEventListener('animationend',SuperColpito(event));
     }
     AllAttacco()
     {   
