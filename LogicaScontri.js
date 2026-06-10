@@ -210,7 +210,7 @@ function SuperColpito(event)
             if(Giocando){FrasiNemico.textContent = "";}
             danni = 0;
             AltAttacco = false;
-        Sfondo.removeEventListener('animationend',(event) => SuperColpito(event));
+        Sfondo.removeEventListener('animationend',SuperColpito(event));
     }
 }
 function PausaRiprendi()
