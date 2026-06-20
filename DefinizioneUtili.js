@@ -6,7 +6,7 @@ const DoppiaPistolaDaClown = new Arma("Doppia pistola da clown",17000,12,2,300,1
     ["Falso allarme", 500, 67, 0.1, 30, 85, 1000, true, "Ahah!"]);
 const SpargiSchegge = new Arma("Spargischegge",10000,25,4,1000,550,false,"|***|",["splsh!", "fr-ln", "fr-ln"],
     ["Bomba", 8000, 70, 2, 3, 1500, 712, false, "BOOM!"],
-    ["Super schegge", 450, 63, 0.2, 40, 80, 900, true, "tzn"]);
+    ["Superschegge", 450, 63, 0.2, 40, 80, 900, true, "tzn"]);
 const LanciafiammeTriforcuto = new Arma("Lanciafiamme triforcuto",5500,20,5,1,800,true,"^ ^ ^",["FFFSH", "", "blblblbl..."],
     ["Palla di fuoco", 3250, 73, 2.5, 6, 95, 630, true, "Fum!"],
     ["Ventata infuocata", 15200, 150, 20, 1, 2000, 2500, false, "Fvsh!"]);
