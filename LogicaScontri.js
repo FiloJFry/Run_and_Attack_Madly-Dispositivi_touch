@@ -61,10 +61,13 @@ let BottoniSuperComandi = [BottoneSchiva,BottoneSpara,BottoneRicarica,BottoneSup
 let BottoniMovimento = document.querySelectorAll(".movimento");
 let InfoArmi = [PiuInfo,BarraMischia,PienBarraMischia,GirgliaEstensione,BarraEstensione,NomeDellEstensione];
 const VAI = new Event("Riprendi");
+const LEVA = new Event("pop");
 let poi;
-let NemicoInMoto = NemicoScelto.Moto.bind(NemicoScelto);
-let NemicoAllAttacco = NemicoScelto.AllAttacco.bind(NemicoScelto);
-let NemicoAltAttacco = NemicoScelto.AltAttacco.bind(NemicoScelto);
+let NemicoInMoto;
+let NemicoAllAttacco; 
+let NemicoAltAttacco;
+let n;
+let m;
 function ScaricaImmaginiArma(a)
 {
     new Image().src = `./Immagini/Armi/${a.nome}.jpg`;
@@ -190,11 +193,9 @@ function Colpito()
     AttaccoNemico.style.color = "transparent";
     AttaccoNemico.style.transform = `scale(${10/Math.max(distanzaAG,1)})`;
 }
-function SuperColpito(event)
+function SuperColpito()
 {       
-    if(event.animationName == "SuperAttacco")
-    {
-            if(ric > danni && !Schivando)
+        if(ric > danni && !Schivando)
             {
                 Protagonista.vita -= 1;
                 hp.textContent = `HP: ${Protagonista.vita}`;
@@ -205,16 +206,11 @@ function SuperColpito(event)
                     Fine(false);
                 }
             }
-            clearInterval(conto);
             Sfondo.classList.remove("Sfondone");
-            SalvezzInfo.textContent = "";
-            Countdown.textContent = "";
             Boss.setAttribute('src',`./Immagini/Nemici/${NemicoScelto.nome}.jpg`);
             if(Giocando){FrasiNemico.textContent = "";}
             danni = 0;
             AltAttacco = false;
-        Sfondo.removeEventListener('animationend',SuperColpito.bind(event));
-    }
 }
 function PausaRiprendi()
 {   
@@ -316,49 +312,49 @@ function Gioco()
     Sfondo.style.setProperty("--attaccolore",NemicoScelto.coloreAttacco);
     AggiornaMirino();
     ric = NemicoScelto.maxvita*0.02;
-    BottoneMischia.addEventListener('touchstart', (event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneMischia,true);
+    BottoneMischia.addEventListener('touchstart', (event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneMischia,true);
             if(ArmaPresa != MischiaEquipaggiata && !InCarica)
             {
             risparo = true;
             Colpo = Protagonista.CambioArma(MischiaEquipaggiata);
             risparo = true;
             ArmaPresa = MischiaEquipaggiata;}}});
-    BottoneShotgun.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneShotgun,true)
+    BottoneShotgun.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneShotgun,true)
                 if(ArmaPresa != ShotgunEquipaggiato && !InCarica)
                 {
             risparo = true;
             Colpo = Protagonista.CambioArma(ShotgunEquipaggiato);
             risparo = true;
             ArmaPresa = ShotgunEquipaggiato;}}});
-    BottoneAssalto.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneAssalto,true);
+    BottoneAssalto.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneAssalto,true);
                 if(ArmaPresa != AssaltoEquipaggiato && !InCarica)
                 {
             risparo = true;
             Colpo = Protagonista.CambioArma(AssaltoEquipaggiato);
             risparo = true;
             ArmaPresa = AssaltoEquipaggiato;}}});
-    BottoneCecchino.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneCecchino,true);
+    BottoneCecchino.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneCecchino,true);
                 if(ArmaPresa != CecchinoEquipaggiato && !InCarica)
                 {
             risparo = true;
             Colpo = Protagonista.CambioArma(CecchinoEquipaggiato);
             risparo = true;
             ArmaPresa = CecchinoEquipaggiato;}}});
-    BottoneEstensione.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneEstensione,true);
+    BottoneEstensione.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneEstensione,true);
             ArmaPresa.Estensione.Scambia();
     }})
-    BottoneRicarica.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneRicarica,true);
+    BottoneRicarica.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneRicarica,true);
             if(ArmaPresa != MischiaEquipaggiata && !InCarica)
             {   
                 Pulisci();
                 risparo = true;
                 ArmaPresa.Ricarica();}}});
-    BottoneSchiva.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneSchiva,true);
+    BottoneSchiva.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneSchiva,true);
                 if(!Schivando && PuòSchivare)
                 {  
                    Protagonista.Schiva(); 
 }}});
-    BottoneSpara.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneSpara,false);
+    BottoneSpara.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneSpara,false);
             if(!Colpo && !InCarica && risparo)
             {   
                 ArmaPresa.Fuoco();
@@ -367,7 +363,7 @@ function Gioco()
         {
             ArmaPresa.Arresta();
         }});
-    BottoneSuperSpara.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneSuperSpara,false);
+    BottoneSuperSpara.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneSuperSpara,false);
         if(!Colpo && !InCarica && risparo)
             {   
                 ArmaPresa.Estensione.SuperFuoco();
@@ -376,51 +372,70 @@ function Gioco()
         {
             ArmaPresa.Estensione.SuperArresta();
         }});
-    BottoneMuoviSu.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneMuoviSu,false);
+    BottoneMuoviSu.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneMuoviSu,false);
                 if(!Corri)
                 {   
                     PersonaggioGiocabile.classList.add('Scuoti');
                     Corri = true;
                     Protagonista.Muovi(true);
 }}});
-    BottoneMuoviGiù.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){SchiacciaBottone(BottoneMuoviGiù,false);
+    BottoneMuoviGiù.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){SchiacciaBottone(BottoneMuoviGiù,false);
                 if(!Corri)
                 {
                     PersonaggioGiocabile.classList.add('Scuoti');
                     Corri = true;
                     Protagonista.Muovi(false);
 }}});
-    BottoneMuoviSu.addEventListener('touchend',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){BottoneMuoviSu.style.opacity = "0.5"; Corri = false;}});
-    BottoneMuoviGiù.addEventListener('touchend',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){BottoneMuoviGiù.style.opacity = "0.5"; Corri = false;}});
-    BottoneSpara.addEventListener('touchend',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){BottoneSpara.style.opacity = "0.5"; ArmaPresa.Arresta();}});
-    BottoneSuperSpara.addEventListener('touchend',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){BottoneSuperSpara.style.opacity = "0.5"; ArmaPresa.Estensione.SuperArresta();}});
-    document.addEventListener('touchstart',(event) => {event.stopPropagation(); event.preventDefault(); if(!InPausa){if(Spara != undefined){clearInterval(Spara); Spara = undefined;} document.querySelectorAll(".movimento , #Spara","#SuperSpara").forEach(B => {B.style.opacity = "0.5";}); PausaRiprendi(NemicoScelto)}});
-        Partita = setInterval(() => {
+    BottoneMuoviSu.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneMuoviSu.style.opacity = "0.5"; Corri = false;}});
+    BottoneMuoviGiù.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneMuoviGiù.style.opacity = "0.5"; Corri = false;}});
+    BottoneSpara.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneSpara.style.opacity = "0.5"; ArmaPresa.Arresta();}});
+    BottoneSuperSpara.addEventListener('touchend',(event) => {event.stopPropagation(); if(!InPausa){BottoneSuperSpara.style.opacity = "0.5"; ArmaPresa.Estensione.SuperArresta();}});
+    document.addEventListener('touchstart',(event) => {event.stopPropagation(); if(!InPausa){if(Spara != undefined){clearInterval(Spara); Spara = undefined;} document.querySelectorAll(".movimento , #Spara","#SuperSpara").forEach(B => {B.style.opacity = "0.5";}); PausaRiprendi(NemicoScelto)}});
+    Partita = setInterval(() => {
+        document.removeEventListener("Riprendi",NemicoAllAttacco,{once: true,});
+        document.removeEventListener("Riprendi",NemicoAltAttacco,{once: true,});
+        document.removeEventListener("Riprendi",NemicoInMoto,{once: true,});
         let disc = Math.random()*Math.max(30,Math.min(distanza,60))/40 - Math.sqrt(Protagonista.vita)/(Math.trunc(Math.sqrt(Protagonista.vita))*10);
-if(disc < 0.5)
+        if(disc < 0.6)
         {   
             if(!AllAttacco && (distanza > NemicoScelto.velocità || (PuòSchivare && distanza/NemicoScelto.velocità > 0.1)) && (disc > 0.12 || AltAttacco))
             {   
                 if(!InPausa)
-                {
-                    NemicoScelto.AllAttacco(); 
+                {   
+                    if(n < 3)
+                    {
+                        n++;
+                        NemicoScelto.AllAttacco();
+                    }
+                    else
+                    {
+                        n = 0;
+                        NemicoScelto.Moto();
+                    } 
                 }
                 else
                 {
                     document.addEventListener("Riprendi",NemicoAllAttacco,{once: true,});
-                    poi = setTimeout(() => {document.removeEventListener("Riprendi",NemicoAllAttacco,{once: true,});},VRag -1);
                 }
             }
             else if(!AltAttacco)
             {   
                 if(!InPausa)
                 {
-                    NemicoScelto.AltAttacco();
+                    if(m < 3)
+                    {
+                        m++;
+                        NemicoScelto.AltAttacco();
+                    }
+                    else
+                    {
+                        m = 0;
+                        NemicoScelto.Moto();
+                    } 
                 }
                 else
                 {
                     document.addEventListener("Riprendi",NemicoAltAttacco,{once: true,});
-                    poi = setTimeout(() => {document.removeEventListener("Riprendi",NemicoAltAttacco,{once: true,});},VRag -1);
                 }
             }
         }
@@ -433,7 +448,6 @@ if(disc < 0.5)
             else
             {
                 document.addEventListener("Riprendi",NemicoInMoto,{once: true,});
-                poi = setTimeout(() => {document.removeEventListener("Riprendi",NemicoInMoto,{once: true,});},VRag -1);
             }
         }
     },VRag);
@@ -449,6 +463,9 @@ function VaiVaiVai()
     BottoneCecchino.querySelector('img').src = `Immagini/Anteprime/${CecchinoEquipaggiato.nome}_anteprima.jpg`;
     difficoltà = Number(sessionStorage.getItem("Difficoltà"));
     VRag = 4000/difficoltà;
+    NemicoInMoto = NemicoScelto.Moto.bind(NemicoScelto);
+    NemicoAllAttacco = NemicoScelto.AllAttacco.bind(NemicoScelto);
+    NemicoAltAttacco = NemicoScelto.AltAttacco.bind(NemicoScelto);
     AggiornaImpostazioni();
     ScaricaImmagini(MischiaEquipaggiata.nome,ShotgunEquipaggiato,AssaltoEquipaggiato,CecchinoEquipaggiato,NemicoScelto.nome);
     Filtra(filtro);

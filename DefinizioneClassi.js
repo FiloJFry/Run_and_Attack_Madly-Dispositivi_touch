@@ -81,7 +81,6 @@ class Nemico
         }
         else
         {   
-            document.removeEventListener("Riprendi",this.Attacco.bind(this),{once: true,});
             document.addEventListener("Riprendi",this.Attacco.bind(this),{once: true,});
         }},1000/this.velocità);
     }
@@ -90,12 +89,16 @@ class Nemico
         AltAttacco = true;
         Boss.setAttribute('src',`./Immagini/Nemici/${this.nome}_attaccando.jpg`);
         FrasiNemico.textContent = `${this.Frasi[0]}`;
-        document.querySelector('body').classList.add("Sfondone");
+        Sfondo.classList.add("Sfondone");
         SalvezzInfo.innerHTML = "Infliggi danni entro<br/>o schiva fra"
         Countdown.textContent = 8;
         let nds = 80;
-        conto = setInterval(() => {if(!InPausa){nds--; if(nds%10 == 0 && nds > 0){Countdown.textContent = nds/10;} else if(nds == 0){clearInterval(conto);}}},100);
-        Sfondo.addEventListener('animationend',SuperColpito(event),{once:true});
+        conto = setInterval(() => {if(!InPausa){nds--; if(nds%10 == 0 && nds > 0){Countdown.textContent = nds/10;} else if(nds == 0){
+            SalvezzInfo.textContent = ""; 
+            Countdown.textContent = ""; 
+            Sfondo.dispatchEvent(LEVA);
+            clearInterval(conto);}}},100);
+        Sfondo.addEventListener('pop',() => SuperColpito(),{once: true});
     }
     AllAttacco()
     {   
@@ -160,7 +163,6 @@ class Nemico
         }
         else
         {   
-            document.removeEventListener("Riprendi",this.AggiornaPosizione.bind(this),{once: true,});
             document.addEventListener("Riprendi",this.AggiornaPosizione.bind(this),{once: true,});
         }},1000/this.velocità);
     }
