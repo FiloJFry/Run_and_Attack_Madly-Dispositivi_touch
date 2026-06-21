@@ -166,7 +166,7 @@ function Preso(ArmaEquipaggiata)
             danni += ArmaEquipaggiata.danni;
             if(danni >= ric)
             {
-                Sfondo.dispatchEvent(new AnimationEvent('animationend',{animationName: 'SuperAttacco'}));
+                Sfondo.dispatchEvent(LEVA);
             }
         }
         return true;
